@@ -1,0 +1,23 @@
+# Example
+
+```
+adventofcode
+├── 2017
+│   └── 1
+│       ├── CataldoM
+│       │   ├── input
+│       │   ├── main.pl
+│       │   └── output
+│       ├── lucianoq
+│       │   ├── input
+│       │   ├── main.rb
+│       │   └── output
+│       ├── Simoruty
+│       │   ├── input
+│       │   ├── MainClass.java
+│       │   └── output
+│       └── text
+├── 2018
+└── README
+
+```
