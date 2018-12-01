@@ -4,9 +4,8 @@ import sys
 
 lines = []
 for l in sys.stdin:
-    l = l.strip()
-    if l != '':
-        lines.append(l)
+    if l.strip() != '':
+        lines.append(l.strip())
 
 shown = {}
 tot = 0
