@@ -1,23 +1,73 @@
 # Example
 
 ```
-adventofcode
+.
 ├── 2017
-│   └── 1
-│       ├── CataldoM
-│       │   ├── input
-│       │   ├── main.pl
-│       │   └── output
-│       ├── lucianoq
-│       │   ├── input
-│       │   ├── main.rb
-│       │   └── output
-│       ├── Simoruty
-│       │   ├── input
-│       │   ├── MainClass.java
-│       │   └── output
-│       └── text
+│   ├── 1
+│   │   ├── part1
+│   │   │   ├── assignment
+│   │   │   ├── lucianoq
+│   │   │   │   ├── input
+│   │   │   │   ├── main.go
+│   │   │   │   ├── main.py
+│   │   │   │   ├── main.rb
+│   │   │   │   └── output
+│   │   │   ├── sonictrain
+│   │   │   │   └── main.py
+│   │   │   ├── test.in
+│   │   │   └── test.out
+│   │   └── part2
+│   │       ├── assignment
+│   │       ├── lucianoq
+│   │       │   ├── input
+│   │       │   ├── main.go
+│   │       │   ├── main.py
+│   │       │   └── output
+│   │       ├── sonictrain
+│   │       │   └── main.py
+│   │       ├── test.in
+│   │       └── test.out
+│   ├── 2
+│   │   ├── part1
+│   │   │   ├── assignment
+│   │   │   ├── lucianoq
+│   │   │   │   ├── input
+│   │   │   │   ├── main.rb
+│   │   │   │   └── output
+│   │   │   ├── test.in
+│   │   │   └── test.out
+│   │   └── part2
+│   │       ├── assignment
+│   │       ├── lucianoq
+│   │       │   ├── input
+│   │       │   ├── main.go
+│   │       │   └── output
+│   │       ├── test.in
+│   │       └── test.out
+│   └── 3
+│       └── part1
+│           └── assignment
 ├── 2018
+│   └── 1
+│       ├── part1
+│       │   ├── assignment
+│       │   ├── cataldoM
+│       │   │   ├── input.txt
+│       │   │   └── runWithNode.js
+│       │   └── lucianoq
+│       │       ├── input
+│       │       ├── main.rb
+│       │       └── output
+│       └── part2
+│           ├── assignment
+│           ├── cataldoM
+│           │   ├── input.txt
+│           │   └── runWithNode.js
+│           └── lucianoq
+│               ├── input
+│               ├── main.go
+│               ├── main.py
+│               └── output
 └── README
-
 ```
+
