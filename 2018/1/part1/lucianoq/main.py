@@ -2,13 +2,9 @@
 
 import sys
 
-lines = []
+tot = 0
 for l in sys.stdin:
     if l.strip() != '':
-        lines.append(l.strip())
-
-tot = 0
-for l in lines:
-    tot += int(l)
+        tot += int(l.strip())
 
 print(tot)
