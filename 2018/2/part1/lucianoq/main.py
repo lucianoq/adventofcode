@@ -3,31 +3,31 @@
 import sys
 
 
-def count_for(str):
-    two, three = False, False
+def contains23(str):
+    c2, c3 = False, False
     count = {}
-    for c in l:
-        if c not in count:
-            count[c] = 1
+    for ch in str:
+        if ch not in count:
+            count[ch] = 1
         else:
-            count[c] += 1
+            count[ch] += 1
     for k, v in count.items():
         if v == 3:
-            three = True
+            c3 = True
         if v == 2:
-            two = True
-        if two and three:
+            c2 = True
+        if c2 and c3:
             return True, True
-    return two, three
+    return c2, c3
 
 
-count_two, count_three = 0, 0
+num2, num3 = 0, 0
 for l in sys.stdin:
     if l.strip() != '':
-        two, three = count_for(l)
-        if two:
-            count_two += 1
-        if three:
-            count_three += 1
+        contains2, contains3 = contains23(l)
+        if contains2:
+            num2 += 1
+        if contains3:
+            num3 += 1
 
-print(count_two * count_three)
+print(num2 * num3)
