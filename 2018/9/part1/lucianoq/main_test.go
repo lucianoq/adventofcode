@@ -1,6 +1,8 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 var testInput = []struct {
 	name    string
@@ -8,6 +10,7 @@ var testInput = []struct {
 	marbles int
 	score   int
 }{
+	{"Assignment", 9, 25, 32},
 	{"A", 10, 1618, 8317},
 	{"B", 13, 7999, 146373},
 	{"C", 17, 1104, 2764},
