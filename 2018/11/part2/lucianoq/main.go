@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 )
 
 const (
@@ -11,8 +10,9 @@ const (
 )
 
 func main() {
-	_, x, y, size := FindSquare(gridSerialNumber)
-	fmt.Printf("%d,%d,%d\n", x, y, size)
+	r := FindSquare(gridSerialNumber)
+	//fmt.Printf("power:%d, x:%d, y:%d, size:%d\n", r.PowerLevel, r.X, r.Y, r.SquareSize)
+	fmt.Printf("%d,%d,%d\n", r.X, r.Y, r.SquareSize)
 }
 
 func PowerLevel(x, y, serial int) int {
@@ -26,58 +26,56 @@ func PowerLevel(x, y, serial int) int {
 	return powerLevel
 }
 
-func FindSquare(serial int) (int, int, int, int) {
-	var grid [gridSize][gridSize]int
+type Result struct {
+	PowerLevel int
+	X          int
+	Y          int
+	SquareSize int
+}
 
-	for i := 0; i < gridSize; i++ {
-		for j := 0; j < gridSize; j++ {
+func FindSquare(serial int) *Result {
+	var grid [gridSize + 1][gridSize + 1]int
+
+	for i := 1; i <= gridSize; i++ {
+		for j := 1; j <= gridSize; j++ {
 			grid[i][j] = PowerLevel(i, j, serial)
 		}
 	}
+	res := make(chan *Result, gridSize)
 
-	//for i:=0; i<gridSize; i++ {
-	//	for j:=0; j<gridSize; j++ {
-	//		fmt.Printf("%d,", grid[i][j])
-	//	}
-	//	fmt.Println()
-	//}
-	//os.Exit(0)
-
-	maxSquareX := -1
-	maxSquareY := -1
-	maxSquareSize := -1
-	maxPower := -1 << 63
-
-	for i := 0; i < gridSize; i++ {
-		for j := 0; j < gridSize; j++ {
-			log.Printf("(%d,%d)", i, j)
-			maxSize := min(i, j, gridSize-i, gridSize-j)
-			log.Printf("Here I can arrive max at %dx%d", 2*(maxSize-1)+1, 2*(maxSize-1)+1)
-			for offset := 0; offset < maxSize; offset++ {
-				squarePower := 0
-				for k := -offset; k <= offset; k++ {
-					for m := -offset; m <= offset; m++ {
-						squarePower += grid[i+k][j+m]
+	for i := 1; i <= gridSize; i++ {
+		go func(i int) {
+			maxSquareX := -1
+			maxSquareY := -1
+			maxSquareSize := -1
+			maxPower := -1 << 63
+			for j := 1; j <= gridSize; j++ {
+				for delta := 0; i+delta <= gridSize && j+delta <= gridSize; delta++ {
+					squarePower := 0
+					for k := 0; k <= delta; k++ {
+						for m := 0; m <= delta; m++ {
+							squarePower += grid[i+k][j+m]
+						}
+					}
+					if squarePower > maxPower {
+						maxPower = squarePower
+						maxSquareX = i
+						maxSquareY = j
+						maxSquareSize = delta + 1
 					}
 				}
-				if squarePower > maxPower {
-					maxPower = squarePower
-					maxSquareX = i - offset
-					maxSquareY = j - offset
-					maxSquareSize = 2*offset + 1
-				}
 			}
-		}
+			res <- &Result{maxPower, maxSquareX, maxSquareY, maxSquareSize}
+		}(i)
 	}
-	return maxPower, maxSquareX, maxSquareY, maxSquareSize
-}
 
-func min(xs ...int) int {
-	m := 1<<63 - 1
-	for _, x := range xs {
-		if x < m {
-			m = x
+	maxResult := &Result{PowerLevel: -1 << 63}
+	for i := 1; i <= gridSize; i++ {
+		r := <-res
+		if r.PowerLevel > maxResult.PowerLevel {
+			maxResult = r
 		}
 	}
-	return m
+
+	return maxResult
 }

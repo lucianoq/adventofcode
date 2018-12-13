@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"log"
+	"testing"
+)
 
 func TestCell_PowerLevel0(t *testing.T) {
 	if PowerLevel(3, 5, 8) != 4 {
@@ -27,15 +30,19 @@ func TestCell_PowerLevel3(t *testing.T) {
 }
 
 func TestFindSquare1(t *testing.T) {
-	power, x, y, size := FindSquare(18)
-	if power != 113 || x != 90 || y != 269 || size != 16 {
+	r := FindSquare(18)
+	if r.PowerLevel != 113 || r.X != 90 || r.Y != 269 || r.SquareSize != 16 {
+		log.Printf("Expecting %d in %d,%d,%d, obtained %d in %d,%d,%d",
+			113, 90, 269, 16, r.PowerLevel, r.X, r.Y, r.SquareSize)
 		t.FailNow()
 	}
 }
 
 func TestFindSquare2(t *testing.T) {
-	power, x, y, size := FindSquare(42)
-	if power != 119 || x != 232 || y != 251 || size != 12 {
+	r := FindSquare(42)
+	if r.PowerLevel != 119 || r.X != 232 || r.Y != 251 || r.SquareSize != 12 {
+		log.Printf("Expecting %d in %d,%d,%d, obtained %d in %d,%d,%d",
+			119, 232, 251, 12, r.PowerLevel, r.X, r.Y, r.SquareSize)
 		t.FailNow()
 	}
 }
