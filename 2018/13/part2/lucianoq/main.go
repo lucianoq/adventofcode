@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/fatih/color"
 	"log"
 	"os"
 	"sort"
@@ -34,24 +33,22 @@ func main() {
 	readFile()
 
 	for step := 0; ; step++ {
-		//Dump()
-		if step%100000 == 0 {
-			log.Printf("Step: %d", step)
-		}
-		//log.Printf("carts: %d", len(carts))
-
 		SortCarts()
+
+		crashed := false
 		for _, c := range carts {
 			c.Step()
+			if Crash(c) {
+				crashed = true
+			}
 		}
-
-		Crash()
-
-		if len(carts) == 1 {
-			fmt.Printf("%d,%d\n", carts[0].X, carts[0].Y)
-			return
+		if crashed {
+			Clean()
+			if len(carts) == 1 {
+				fmt.Printf("%d,%d\n", carts[0].X, carts[0].Y)
+				return
+			}
 		}
-
 	}
 }
 
@@ -94,12 +91,7 @@ func charToCell(x, y int, c string) Cell {
 	}
 
 	if dir != null {
-		carts = append(carts, &Cart{
-			Direction: dir,
-			NextTurn:  Left,
-			X:         x,
-			Y:         y,
-		})
+		carts = append(carts, NewCart(x, y, dir))
 	}
 
 	return Cell{
@@ -109,43 +101,47 @@ func charToCell(x, y int, c string) Cell {
 	}
 }
 
-func Dump() {
-	for j := 0; j < height; j++ {
-	CELL:
-		for i := 0; i < width; i++ {
-			for _, c := range carts {
-				if c.X == grid[i][j].X && c.Y == grid[i][j].Y {
-					color.Set(color.BgRed)
-					fmt.Print(c.String())
-					color.Unset()
-					continue CELL
-				}
-			}
-			fmt.Print(grid[i][j].Char)
-		}
-		fmt.Println()
-	}
+//func Dump() {
+//	for j := 0; j < height; j++ {
+//	CELL:
+//		for i := 0; i < width; i++ {
+//			for _, c := range carts {
+//				if c.X == grid[i][j].X && c.Y == grid[i][j].Y {
+//					color.Set(color.BgRed)
+//					fmt.Print(c.String())
+//					color.Unset()
+//					continue CELL
+//				}
+//			}
+//			fmt.Print(grid[i][j].Char)
+//		}
+//		fmt.Println()
+//	}
+//
+//	for i, c := range carts {
+//		fmt.Printf("[%d] (%d,%d) %d %d\n", i, c.X, c.Y, c.Direction, c.NextTurn)
+//	}
+//}
 
-	for i, c := range carts {
-		fmt.Printf("[%d] (%d,%d) %d %d\n", i, c.X, c.Y, c.Direction, c.NextTurn)
+func Crash(c *Cart) bool {
+	found := false
+	for _, car := range carts {
+		if c.ID != car.ID {
+			if c.X == car.X && c.Y == car.Y {
+				found = true
+				c.Crashed = true
+				car.Crashed = true
+			}
+		}
 	}
+	return found
 }
 
-func Crash() {
-	newCarts := make([]*Cart, 0)
-	found := false
-	for i := 0; i < len(carts); i++ {
-		found = false
-		for j := 0; j < len(carts); j++ {
-			if i != j {
-				if carts[i].X == carts[j].X && carts[i].Y == carts[j].Y {
-					found = true
-					break
-				}
-			}
-		}
-		if !found {
-			newCarts = append(newCarts, carts[i])
+func Clean() {
+	newCarts := carts[:0]
+	for _, c := range carts {
+		if !c.Crashed {
+			newCarts = append(newCarts, c)
 		}
 	}
 	carts = newCarts

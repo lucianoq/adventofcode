@@ -22,11 +22,28 @@ func (i Intent) Next() Intent {
 	return Intent((int(i) + 1) % 3)
 }
 
+var cartID = 0
+
 type Cart struct {
+	ID        int
 	X         int
 	Y         int
 	Direction Direction
 	NextTurn  Intent
+	Crashed   bool
+}
+
+func NewCart(x, y int, dir Direction) *Cart {
+	c := &Cart{
+		ID:        cartID,
+		X:         x,
+		Y:         y,
+		Direction: dir,
+		NextTurn:  Left,
+		Crashed:   false,
+	}
+	cartID++
+	return c
 }
 
 func (c *Cart) Step() {
