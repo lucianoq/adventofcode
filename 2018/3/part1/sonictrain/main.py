@@ -35,8 +35,8 @@ for c in claims:
             matrix[x][y] += 1
 
 count = 0
-for x in range(max_x):
-    for y in range(max_y):
+for x in range(SIZE):
+    for y in range(SIZE):
         if matrix[x][y] > 1:
             count += 1
 print(count)
