@@ -1,23 +1,42 @@
-import sys
+SIZE = 1000
 
-data = list()
+class Claim:
+    def __init__(self, x, y, w, h):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
 
-for line in sys.stdin:
-    data.append(line)
+claims = []
+with open("input") as f:
+    for line in f:
+        a = line.split(" @ ")
+        b = a[1].split(": ")
+        position = b[0].split(",")
+        dimension = b[1].split("x")
 
-for i in range(len(data)):
+        claims.append(Claim(int(position[0]), int(position[1]), int(dimension[0]), int(dimension[1])))
 
-    ID = i+1
-    
-    a = data[i].split(" @ ")
-    b = a[1].split(": ")
+# max_x = -1
+# max_y = -1
+# for c in claims:
+#     new_x_max =c.x + c.w
+#     if new_x_max > max_x:
+#         max_x = new_x_max
+#     new_y_max = c.y + c.h
+#     if new_y_max > max_y:
+#         max_y = new_y_max
 
-    position = b[0].split(",")
-    dimension = b[1].split("x")
+matrix = [[0 for y in range(SIZE)] for x in range(SIZE)] 
 
-    X_cordinate = position[0]
-    Y_cordinate = position[1]
-    lenght = dimension[0]
-    height = dimension[1]
+for c in claims:
+    for x in range(c.x, c.x + c.w):
+        for y in range(c.y, c.y + c.h):
+            matrix[x][y] += 1
 
-    ##print ("La matrice #{N} ha origine nel punto con cordinate x={X} ed y={Y} ed ha larghezza {L} e altezza {A}".format (N=ID, X=X_cordinate, Y=Y_cordinate, L=lenght, A=height))
+count = 0
+for x in range(max_x):
+    for y in range(max_y):
+        if matrix[x][y] > 1:
+            count += 1
+print(count)
