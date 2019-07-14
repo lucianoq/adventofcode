@@ -1,4 +1,4 @@
-package main
+package part2
 
 import (
 	"bufio"
@@ -10,7 +10,7 @@ import (
 
 const size = 1000
 
-var grid [size][size]bool
+var grid [size][size]int
 
 func main() {
 	r, _ := regexp.Compile("(turn on|turn off|toggle) (\\d+),(\\d+) through (\\d+),(\\d+)")
@@ -39,7 +39,7 @@ func main() {
 		}
 	}
 
-	fmt.Println(howMany())
+	fmt.Println(brightness())
 }
 
 func apply(fn func(int, int), x1 int, y1 int, x2 int, y2 int) {
@@ -51,24 +51,25 @@ func apply(fn func(int, int), x1 int, y1 int, x2 int, y2 int) {
 }
 
 func toggle(x, y int) {
-	grid[x][y] = !grid[x][y]
+	grid[x][y] += 2
 }
 
 func turnOn(x, y int) {
-	grid[x][y] = true
+	grid[x][y] += 1
 }
 
 func turnOff(x, y int) {
-	grid[x][y] = false
+	grid[x][y] -= 1
+	if grid[x][y] < 0 {
+		grid[x][y] = 0
+	}
 }
 
-func howMany() int {
+func brightness() int {
 	count := 0
 	for i := 0; i < size; i++ {
 		for j := 0; j < size; j++ {
-			if grid[i][j] {
-				count++
-			}
+			count += grid[i][j]
 		}
 	}
 	return count

@@ -1,4 +1,4 @@
-package main
+package part2
 
 import (
 	"fmt"
@@ -20,11 +20,18 @@ func main() {
 	ops := make(map[string]bool)
 	for _, l := range lines {
 		if l != "" {
-			ops[l] = false
+
+			// I need to remove any assignment to b
+			if !strings.HasSuffix(l, " -> b") {
+				ops[l] = false
+			}
 		}
 	}
 
 	mem = make(map[string]uint16)
+
+	// override b
+	mem["b"] = 46065
 
 	for {
 
@@ -62,7 +69,6 @@ func exec(line string) bool {
 		return lshift(args[0], args[1], args[2])
 
 	case "RSHIFT":
-
 		return rshift(args[0], args[1], args[2])
 
 	}

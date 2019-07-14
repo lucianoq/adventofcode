@@ -1,4 +1,4 @@
-package main
+package part2
 
 import (
 	"fmt"
@@ -7,6 +7,8 @@ import (
 	"os"
 	"strings"
 )
+
+const NumSantas = 2
 
 type Point struct{ X, Y int }
 
@@ -39,9 +41,9 @@ func (s *Santa) Visit() {
 	s.space[Point{s.ptr.X, s.ptr.Y}] = true
 }
 
-func (s *Santa) Visited() int {
+func visited(space map[Point]bool) int {
 	count := 0
-	for _, v := range s.space {
+	for _, v := range space {
 		if v {
 			count++
 		}
@@ -49,9 +51,9 @@ func (s *Santa) Visited() int {
 	return count
 }
 
-func NewSanta() *Santa {
+func NewSanta(space map[Point]bool) *Santa {
 	return &Santa{
-		space: make(map[Point]bool),
+		space: space,
 		ptr:   Point{0, 0},
 	}
 }
@@ -64,23 +66,29 @@ func main() {
 
 	input := strings.TrimSpace(string(buf))
 
-	santa := NewSanta()
-	santa.Visit()
+	space := make(map[Point]bool)
+	var santas [NumSantas]*Santa
 
-	for _, c := range input {
+	for i := 0; i < NumSantas; i++ {
+		santas[i] = NewSanta(space)
+		santas[i].Visit()
+	}
+
+	for i, c := range input {
+		s := santas[i%NumSantas]
 		switch c {
 		case '^':
-			santa.North()
+			s.North()
 		case '<':
-			santa.West()
+			s.West()
 		case '>':
-			santa.East()
+			s.East()
 		case 'v':
-			santa.South()
+			s.South()
 		default:
 			log.Printf("unknown character %+v", c)
 		}
 	}
 
-	fmt.Println(santa.Visited())
+	fmt.Println(visited(space))
 }
