@@ -29,6 +29,6 @@ func main() {
 		}
 	}
 
-	fmt.Println(g.MinPath())
+	fmt.Println(g.MaxPath())
 }
 
