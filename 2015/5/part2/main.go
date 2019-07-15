@@ -56,4 +56,3 @@ func B(s string) bool {
 	}
 	return false
 }
-

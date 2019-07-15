@@ -31,4 +31,3 @@ func main() {
 
 	fmt.Println(g.MaxPath())
 }
-
