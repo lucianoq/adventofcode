@@ -27,27 +27,38 @@ func main() {
 	//walk(input, 0)
 
 	rand.Seed(time.Now().UnixNano())
-	var count = 0
-	i := 0
+	var steps = 0
+	same := 0
 
 	res := input
-	for res != "e" {
-		if i%10000 == 0 {
-			fmt.Println(res)
+	for {
+		fmt.Println(res)
+
+		randomReplacement := replacements[rand.Intn(len(replacements))]
+
+		newRes := strings.Replace(res, randomReplacement.To, randomReplacement.From, 1)
+		if newRes == "e" {
+			fmt.Println(steps)
+			return
 		}
 
-		randomMolecule := replacements[rand.Intn(len(replacements))]
+		if res == newRes {
+			same++
+			if same == 30 {
+				//restart
+				res = input
+				same = 0
+				steps = 0
+				continue
+			}
+		}
 
-		newRes := strings.Replace(res, randomMolecule.To, randomMolecule.From, -1)
 		if res != newRes {
-			count++
+			steps++
+			same = 0
 			res = newRes
 		}
-
-		i++
 	}
-
-	fmt.Println(count)
 
 	//// set of found molecules
 	//molecules := map[string]bool{"e": true}
