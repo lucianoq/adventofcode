@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"log"
+	"math"
 	"math/rand"
 	"os"
 	"strings"
@@ -15,95 +16,77 @@ type Replacement struct {
 	To   string
 }
 
+var (
+	input        string
+	replacements []Replacement
+)
+
 func main() {
-	input, replacements := parse()
-
-	//for k := range replacements {
-	//	sort.Slice(replacements[k], func(i, j int) bool { return len(replacements[k][i]) > len(replacements[k][j]) })
-	//}
-	//
-	//sort.Slice(repl, func(i, j int) bool { return len(replacements[repl[i]][0]) > len(replacements[repl[j]][0]) })
-
-	//walk(input, 0)
+	parse()
 
 	rand.Seed(time.Now().UnixNano())
-	var steps = 0
-	same := 0
 
-	res := input
-	for {
-		fmt.Println(res)
+	min := math.MaxInt64
 
-		randomReplacement := replacements[rand.Intn(len(replacements))]
+	// Repeating 100 times to find the minimum
+	// Actually there is one possible path, so this is useless, but not knowing
+	// that, this is better than taking the first
+	for i := 0; i < 100; i++ {
+		rand.Shuffle(len(replacements), func(i, j int) {
+			replacements[i], replacements[j] = replacements[j], replacements[i]
+		})
 
-		newRes := strings.Replace(res, randomReplacement.To, randomReplacement.From, 1)
-		if newRes == "e" {
-			fmt.Println(steps)
-			return
-		}
-
-		if res == newRes {
-			same++
-			if same == 30 {
-				//restart
-				res = input
-				same = 0
-				steps = 0
-				continue
-			}
-		}
-
-		if res != newRes {
-			steps++
-			same = 0
-			res = newRes
+		newVal := guess()
+		if newVal < min {
+			min = newVal
 		}
 	}
 
-	//// set of found molecules
-	//molecules := map[string]bool{"e": true}
-	//
-	//for numStep := 1; ; numStep++ {
-	//	children := make(map[string]bool)
-	//
-	//	for m := range molecules {
-	//		for i := 0; i < len(m); i++ {
-	//			for _, a := range atoms {
-	//				//if i<=len(m) {
-	//				if strings.HasPrefix(m[i:], a) {
-	//					for r := range replacements {
-	//						if replacements[r].From == a {
-	//							newMolecule := applyChange(m, i, replacements[r])
-	//							if newMolecule == input {
-	//								fmt.Println(numStep)
-	//								return
-	//							}
-	//							children[newMolecule] = true
-	//						}
-	//					}
-	//				}
-	//			}
-	//		}
-	//	}
-	//
-	//	molecules = children
-	//	log.Printf("step %d finished. New set of molecules: %d\n", numStep, len(molecules))
-	//}
+	fmt.Println(min)
 }
 
-func applyChange(old string, i int, to string) string {
-	// case "=" is the same for both return. Including here for saving one
-	// subslicing op
-	if i+len(to) >= len(old) {
-		return old[:i] + to
+func guess() int {
+	var s = input
+	var steps = 0
+	for {
+		steps++
+
+		newS, changed := tryToApplyAReplacement(s)
+		if newS == "e" {
+			return steps
+		}
+
+		if !changed {
+			// Dead end here. We need to reset, shuffle and restart.
+			s = input
+			steps = 0
+			rand.Shuffle(len(replacements), func(i, j int) {
+				replacements[i], replacements[j] = replacements[j], replacements[i]
+			})
+			continue
+		}
+
+		s = newS
 	}
-	return old[:i] + to + old[i+len(to):]
+}
+
+func tryToApplyAReplacement(s string) (string, bool) {
+	for _, r := range replacements {
+		newS := strings.Replace(s, r.To, r.From, 1)
+
+		if s != newS {
+			return newS, true
+		}
+	}
+
+	// No replacement is possible, dead end.
+	return "", false
 }
 
 func parse() (string, []Replacement) {
 	scanner := bufio.NewScanner(os.Stdin)
 
-	replacements := make([]Replacement, 0)
+	replacements = make([]Replacement, 0)
 
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
@@ -122,27 +105,7 @@ func parse() (string, []Replacement) {
 	}
 
 	scanner.Scan()
-	input := strings.TrimSpace(scanner.Text())
+	input = strings.TrimSpace(scanner.Text())
 
 	return input, replacements
 }
-
-//func walk(s string, steps int) {
-//	//log.Println(s)
-//
-//	if s == "e" {
-//		fmt.Println(steps)
-//		os.Exit(0)
-//	}
-//
-//	for _, r := range repl {
-//		for i := 0; i < len(s); i++ {
-//			if strings.HasPrefix(s[i:], r) {
-//				for _, to := range replacements[r] {
-//					newS := applyChange(s, i, to)
-//					walk(newS, steps+1)
-//				}
-//			}
-//		}
-//	}
-//}
