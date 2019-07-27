@@ -39,7 +39,7 @@ func main() {
 			}
 		})
 
-		if bigSum >0 {
+		if bigSum > 0 {
 			break
 		}
 	}
