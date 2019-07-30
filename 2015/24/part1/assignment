@@ -20,12 +20,12 @@ other two groups, so long as all of the groups weigh the same.
 
 Furthermore, Santa tells you, if there are multiple ways to arrange the packages
 such that the fewest possible are in the first group, you need to choose the way
- where the first group has the smallest quantum entanglement to reduce the
- chance of any "complications". The quantum entanglement of a group of packages
- is the product of their weights, that is, the value you get when you multiply
- their weights together. Only consider quantum entanglement if the first group
- has the fewest possible number of packages in it and all groups weigh the same
- amount.
+where the first group has the smallest quantum entanglement to reduce the
+chance of any "complications". The quantum entanglement of a group of packages
+is the product of their weights, that is, the value you get when you multiply
+their weights together. Only consider quantum entanglement if the first group
+has the fewest possible number of packages in it and all groups weigh the same
+amount.
 
 For example, suppose you have ten packages with weights 1 through 5 and 7
 through 11. For this situation, some of the unique first groups, their quantum
