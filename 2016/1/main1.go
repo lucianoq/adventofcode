@@ -1,23 +1,13 @@
-package _
+package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
-	"os"
 	"strconv"
-	"strings"
 )
 
-var dirs = "NESW"
-
 func main() {
-	buf, err := ioutil.ReadAll(os.Stdin)
-	if err != nil {
-		log.Fatal()
-	}
-	items := strings.Split(strings.TrimSpace(string(buf)), ", ")
-
+	items := parse()
 	path := make(map[byte]int)
 
 	face := 0
