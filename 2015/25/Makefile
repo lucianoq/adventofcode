@@ -5,4 +5,4 @@
 	ruby main1.rb
 
 2:
-	
+	true	
