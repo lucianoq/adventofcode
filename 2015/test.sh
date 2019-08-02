@@ -1,22 +1,28 @@
 #!/usr/bin/env bash
 
+printf "%11sDay   Part   Result   Duration\n" ""
+
 for i in $(seq 1 25); do
-  echo "Testing output of day $i"
   cd "$i"
+  for part in 1 2; do
 
-  echo -n "-- Part1......"
-  START=$(date +%s%N | cut -b1-13)
-  diff <(make -s 1) output1 && echo -n "ok" || echo -n "FAIL"
-  END=$(date +%s%N | cut -b1-13)
-  DIFF=$(echo "$END - $START" | bc)
-  echo "     time: ${DIFF}ms"
+    [[ $part -eq 1 ]] && printf 'Checking%5s' "$i" || printf '%13s' ""
+    printf '%7d' "$part"
 
-  echo -n "-- Part2......"
-  START=$(date +%s%N | cut -b1-13)
-  diff <(make -s 2) output2 && echo -n "ok" || echo -n "FAIL"
-  END=$(date +%s%N | cut -b1-13)
-  DIFF=$(echo "$END - $START" | bc)
-  echo "     time: ${DIFF}ms"
+    START=$(date +%s%N | cut -b1-13)
+    OUT=$(make -s $part)
+    END=$(date +%s%N | cut -b1-13)
 
+    printf "    "
+    if diff <(echo "$OUT") "output$part"; then
+      printf "  ok  "
+    else
+      printf " FAIL "
+    fi
+
+    ELAPSED=$(echo "$END - $START" | bc)
+    printf '%8.4sms\n' "${ELAPSED}"
+
+  done
   cd ..
 done 2>/dev/null

@@ -5,80 +5,57 @@ Answers and Code.
 #### 2015
 
 ```
-~/d/a/2015  master   ./test.sh
-Testing output of day 1
--- Part1......ok     time: 98ms
--- Part2......ok     time: 10ms
-Testing output of day 2
--- Part1......ok     time: 52ms
--- Part2......ok     time: 52ms
-Testing output of day 3
--- Part1......ok     time: 122ms
--- Part2......ok     time: 119ms
-Testing output of day 4
--- Part1......ok     time: 210ms
--- Part2......ok     time: 3176ms
-Testing output of day 5
--- Part1......ok     time: 117ms
--- Part2......ok     time: 120ms
-Testing output of day 6
--- Part1......ok     time: 166ms
--- Part2......ok     time: 172ms
-Testing output of day 7
--- Part1......ok     time: 168ms
--- Part2......ok     time: 182ms
-Testing output of day 8
--- Part1......ok     time: 125ms
--- Part2......ok     time: 118ms
-Testing output of day 9
--- Part1......ok     time: 172ms
--- Part2......ok     time: 173ms
-Testing output of day 10
--- Part1......ok     time: 127ms
--- Part2......ok     time: 320ms
-Testing output of day 11
--- Part1......ok     time: 125ms
--- Part2......ok     time: 143ms
-Testing output of day 12
--- Part1......ok     time: 20ms
--- Part2......ok     time: 67ms
-Testing output of day 13
--- Part1......ok     time: 141ms
--- Part2......ok     time: 390ms
-Testing output of day 14
--- Part1......ok     time: 123ms
--- Part2......ok     time: 122ms
-Testing output of day 15
--- Part1......ok     time: 178ms
--- Part2......ok     time: 181ms
-Testing output of day 16
--- Part1......ok     time: 148ms
--- Part2......ok     time: 130ms
-Testing output of day 17
--- Part1......ok     time: 166ms
--- Part2......ok     time: 116ms
-Testing output of day 18
--- Part1......ok     time: 131ms
--- Part2......ok     time: 132ms
-Testing output of day 19
--- Part1......ok     time: 116ms
--- Part2......ok     time: 263ms
-Testing output of day 20
--- Part1......ok     time: 3548ms
--- Part2......ok     time: 3793ms
-Testing output of day 21
--- Part1......ok     time: 118ms
--- Part2......ok     time: 119ms
-Testing output of day 22
--- Part1......ok     time: 3463ms
--- Part2......ok     time: 3577ms
-Testing output of day 23
--- Part1......ok     time: 237ms
--- Part2......ok     time: 123ms
-Testing output of day 24
--- Part1......ok     time: 9013ms
--- Part2......ok     time: 174ms
-Testing output of day 25
--- Part1......ok     time: 171ms
--- Part2......ok     time: 3ms
+~/d/a/2015 >  ./test.sh
+           Day   Part   Result   Duration
+Checking    1      1      ok        96ms
+                   2      ok        13ms
+Checking    2      1      ok        84ms
+                   2      ok        88ms
+Checking    3      1      ok       179ms
+                   2      ok       183ms
+Checking    4      1      ok       287ms
+                   2      ok      3442ms
+Checking    5      1      ok       160ms
+                   2      ok       160ms
+Checking    6      1      ok       264ms
+                   2      ok       321ms
+Checking    7      1      ok       257ms
+                   2      ok       251ms
+Checking    8      1      ok       155ms
+                   2      ok       182ms
+Checking    9      1      ok       286ms
+                   2      ok       251ms
+Checking   10      1      ok       187ms
+                   2      ok       435ms
+Checking   11      1      ok       189ms
+                   2      ok       230ms
+Checking   12      1      ok        35ms
+                   2      ok        99ms
+Checking   13      1      ok       241ms
+                   2      ok       650ms
+Checking   14      1      ok       160ms
+                   2      ok       176ms
+Checking   15      1      ok       259ms
+                   2      ok       292ms
+Checking   16      1      ok       189ms
+                   2      ok       191ms
+Checking   17      1      ok       249ms
+                   2      ok       162ms
+Checking   18      1      ok       193ms
+                   2      ok       196ms
+Checking   19      1      ok       174ms
+                   2      ok       374ms
+Checking   20      1      ok      5164ms
+                   2      ok      5554ms
+Checking   21      1      ok       175ms
+                   2      ok       183ms
+Checking   22      1      ok      2508ms
+                   2      ok      2977ms
+Checking   23      1      ok       194ms
+                   2      ok       211ms
+Checking   24      1      ok      7555ms
+                   2      ok       320ms
+Checking   25      1      ok       299ms
+                   2      ok         6ms
+
 ```
