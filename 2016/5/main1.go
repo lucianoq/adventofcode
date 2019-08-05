@@ -17,7 +17,7 @@ func main() {
 		buf = strconv.AppendInt(inputBuf, int64(i), 10)
 		md5Sum := md5.Sum(buf)
 
-		// n hex string chars mean first n/2 bytes == 0
+		// n hex string chars means n/2 bytes
 		if md5Sum[0] == 0 && md5Sum[1] == 0 && md5Sum[2]>>4 == 0 {
 			hexString := hex.EncodeToString(md5Sum[:])
 			password += string(hexString[5])
