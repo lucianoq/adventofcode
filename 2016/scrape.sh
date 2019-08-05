@@ -2,7 +2,7 @@
 
 export COOKIE_TOKEN="$1"
 
-for i in $(seq 5 25); do
+for i in $(seq 6 25); do
 
   #create dir
   mkdir "$i"

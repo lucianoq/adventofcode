@@ -4,7 +4,8 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
-	"log"
+	"io"
+	"os"
 	"strconv"
 )
 
@@ -12,7 +13,7 @@ var input = "ugkcyxxp"
 
 func main() {
 	inputBuf := []byte(input)
-	password := make(map[uint8]byte)
+	password := make(map[int]byte)
 
 	var buf = make([]byte, 0, len(input)+9)
 	for i := 0; ; i++ {
@@ -20,31 +21,26 @@ func main() {
 		md5Sum := md5.Sum(buf)
 
 		// n hex string chars means n/2 bytes
-		if md5Sum[0] == 0 && md5Sum[1] == 0 && md5Sum[2]>>4 == 0 {
+		// checking like this helps to lazy call EncodeToString
+		if md5Sum[0]|md5Sum[1]|md5Sum[2]>>4 == 0 {
 			hexString := hex.EncodeToString(md5Sum[:])
-			log.Println(hexString)
 
-			position := hexString[5] - 48
+			position := int(hexString[5] - 48) // 48 ASCII code of '0'
+
+			// ignore wrong position
 			if position < 0 || position > 7 {
-				log.Println("ignored because position = ", position)
 				continue
 			}
 
+			// ignore already found
 			if _, ok := password[position]; ok {
-				log.Println("ignored because already found ", position)
 				continue
 			}
 
 			password[position] = hexString[6]
 
-			for i := uint8(0); i < 8; i++ {
-				if password[i] == 0 {
-					fmt.Print("_")
-				} else {
-					fmt.Print(string(password[i]))
-				}
-			}
-			fmt.Println()
+			fmt.Fprint(os.Stderr, "\033[H\033[2J")
+			printPassword(os.Stderr, password)
 
 			if len(password) == 8 {
 				break
@@ -52,8 +48,16 @@ func main() {
 		}
 	}
 
-	for i := uint8(0); i < 8; i++ {
-		fmt.Print(string(password[i]))
+	printPassword(os.Stdout, password)
+}
+
+func printPassword(w io.Writer, password map[int]byte) {
+	for i := 0; i < 8; i++ {
+		if password[i] == 0 {
+			_, _ = fmt.Fprint(w, "_")
+		} else {
+			_, _ = fmt.Fprint(w, string(password[i]))
+		}
 	}
-	fmt.Println()
+	_, _ = fmt.Fprintln(w)
 }

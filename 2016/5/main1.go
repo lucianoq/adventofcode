@@ -18,7 +18,8 @@ func main() {
 		md5Sum := md5.Sum(buf)
 
 		// n hex string chars means n/2 bytes
-		if md5Sum[0] == 0 && md5Sum[1] == 0 && md5Sum[2]>>4 == 0 {
+		// checking like this helps to lazy call EncodeToString
+		if md5Sum[0]|md5Sum[1]|md5Sum[2]>>4 == 0 {
 			hexString := hex.EncodeToString(md5Sum[:])
 			password += string(hexString[5])
 			if len(password) == 8 {
