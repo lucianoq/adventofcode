@@ -31,7 +31,7 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		coord = append(coord, Cell{X: x, Y: y, Label: string([]rune(id)[i]), Senior:true})
+		coord = append(coord, Cell{X: x, Y: y, Label: string([]rune(id)[i]), Senior: true})
 		i++
 	}
 	if err := scanner.Err(); err != nil {
@@ -75,11 +75,10 @@ func main() {
 		matrix[c.X][c.Y] = c
 	}
 
-
 	// populate with influence of seniors cell
 	for i := 0; i <= maxX; i++ {
 		for j := 0; j <= maxY; j++ {
-			if ! matrix[i][j].Senior {
+			if !matrix[i][j].Senior {
 				var found bool
 				for k := 1; !found; k++ {
 					neighbors := generateIndexes(k)
@@ -114,7 +113,7 @@ func main() {
 		for j := 0; j < len(matrix[0]); j++ {
 			lb := matrix[i][j].Label
 			if lb != "." {
-				count[strings.ToUpper(lb)] ++
+				count[strings.ToUpper(lb)]++
 			}
 		}
 	}

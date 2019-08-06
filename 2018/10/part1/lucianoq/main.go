@@ -76,8 +76,8 @@ func Sky(time int) {
 	}
 	maxX -= minX
 	maxY -= minY
-	maxX ++
-	maxY ++
+	maxX++
+	maxY++
 
 	if maxX < 64 {
 		// Initialize

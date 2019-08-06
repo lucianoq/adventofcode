@@ -19,7 +19,7 @@ func main() {
 		fmt.Sscanf(line, "#%d @ %d,%d: %dx%d", &id, &posX, &posY, &w, &h)
 		for i := posX; i < posX+w; i++ {
 			for j := posY; j < posY+h; j++ {
-				fabric[i][j] ++
+				fabric[i][j]++
 			}
 		}
 	}
@@ -28,7 +28,7 @@ func main() {
 	for i := 0; i < size; i++ {
 		for j := 0; j < size; j++ {
 			if fabric[i][j] >= 2 {
-				count ++
+				count++
 			}
 		}
 	}

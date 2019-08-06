@@ -32,7 +32,7 @@ func main() {
 	for _, c := range claims {
 		for i := c.x; i < c.x+c.width; i++ {
 			for j := c.y; j < c.y+c.height; j++ {
-				fabric[i][j] ++
+				fabric[i][j]++
 			}
 		}
 	}

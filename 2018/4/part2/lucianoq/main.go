@@ -34,7 +34,7 @@ func main() {
 				asleepRecord[e.guard] = &[60]int{}
 			}
 			for j := logs[i-1].when.Minute(); j < e.when.Minute(); j++ {
-				asleepRecord[e.guard][j] ++
+				asleepRecord[e.guard][j]++
 			}
 		}
 	}

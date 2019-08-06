@@ -18,7 +18,7 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
-		if line!="" {
+		if line != "" {
 			var x, y string
 			n, err := fmt.Sscanf(line, "Step %s must be finished before step %s can begin.", &x, &y)
 			if err != nil || n != 2 {

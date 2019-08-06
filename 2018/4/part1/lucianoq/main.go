@@ -62,7 +62,7 @@ func main() {
 		}
 	}
 
-	fmt.Println(maxMinute*sleepyGuard)
+	fmt.Println(maxMinute * sleepyGuard)
 }
 
 func getOrderedLogs() []*event {

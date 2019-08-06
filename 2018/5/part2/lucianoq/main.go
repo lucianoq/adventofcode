@@ -46,7 +46,7 @@ func React(line string) (string, bool) {
 	return line, false
 }
 
-func FullyReact(line string) (int) {
+func FullyReact(line string) int {
 	found := true
 	for found {
 		line, found = React(line)
