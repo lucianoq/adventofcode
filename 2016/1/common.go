@@ -16,4 +16,3 @@ func parse() []string {
 	}
 	return strings.Split(strings.TrimSpace(string(buf)), ", ")
 }
-

@@ -23,4 +23,3 @@ func parse() []map[rune]int {
 
 	return freq
 }
-
