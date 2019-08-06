@@ -17,7 +17,7 @@ func main() {
 			l := len(list)
 
 			sum := 0
-			for i:=0; i<l; i++ {
+			for i := 0; i < l; i++ {
 				if list[i] == list[(i+l/2)%l] {
 					n, err := strconv.Atoi(list[i])
 					if err != nil {
