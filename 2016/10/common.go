@@ -63,7 +63,7 @@ func parseAndRun() {
 			CreateBot(wg, bot, low, lowType, high, highType)
 		}
 	}
-	
+
 	for _, i := range inputs {
 		bots[i.bot].C <- i.chip
 	}

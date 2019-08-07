@@ -20,12 +20,12 @@
 
    For example, consider the following instructions:
 
-   value 5 goes to bot 2
-bot 2 gives low to bot 1 and high to bot 0
-value 3 goes to bot 1
-bot 1 gives low to output 1 and high to bot 0
-bot 0 gives low to output 2 and high to output 0
-value 2 goes to bot 2
+    value 5 goes to bot 2
+    bot 2 gives low to bot 1 and high to bot 0
+    value 3 goes to bot 1
+    bot 1 gives low to output 1 and high to bot 0
+    bot 0 gives low to output 2 and high to output 0
+    value 2 goes to bot 2
 
 
      * Initially, bot 1 starts with a value- 3 chip, and bot 2 starts with
@@ -45,6 +45,11 @@ value 2 goes to bot 2
    Based on your instructions, what is the number of the bot that is
    responsible for comparing value- 61 microchips with value- 17
    microchips?
+
+--- Part Two ---
+
+   What do you get if you multiply together the values of one chip in each
+   of outputs 0 , 1 , and 2 ?
 
 References
 
