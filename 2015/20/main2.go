@@ -2,40 +2,37 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
-const input = 34000000
+const (
+	input int32 = 34000000
+
+	// Elf #limit alone will deliver 34M+ presents to house #limit.
+	// that means that house #limit is a solution, maybe not the best.
+	// Looking for something smaller, we should iterate no more than
+	// `limit` houses and `limit` elves.
+	limit = input/11 + 1
+)
 
 func main() {
-	for h := 1; ; h++ {
-		if presents(h) >= input {
-			fmt.Println(h)
+
+	// This slice is (4 * 3090910 ) bytes = 12363640 bytes =~ 11.8 MiB
+	// We can handle it
+	houses := make([]int32, limit)
+
+	var e, h int32 = 1, 1
+	for e = 1; e < limit; e++ {
+		c := 0
+		for h = e; c < 50 && h < limit; h += e {
+			houses[h] += 11 * e
+			c++
+		}
+	}
+
+	for i, h := range houses {
+		if h >= input {
+			fmt.Println(i)
 			return
 		}
 	}
-}
-
-func presents(h int) int {
-	presents := 0
-	for i := 1; i <= sqrt(h); i++ {
-		if h%i == 0 {
-
-			if h < 50*i {
-				presents += 11 * i
-			}
-
-			mirrorDiv := h / i
-			if mirrorDiv != i {
-				if h < 50*mirrorDiv {
-					presents += 11 * mirrorDiv
-				}
-			}
-		}
-	}
-	return presents
-}
-
-func sqrt(x int) int {
-	return int(math.Floor(math.Sqrt(float64(x))))
 }
