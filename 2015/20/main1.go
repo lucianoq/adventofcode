@@ -6,7 +6,7 @@ import (
 
 const (
 	input int32 = 34000000
-	
+
 	// Elf #[3.4M] alone will deliver 34M presents to house #[3.4M]
 	// that means that house #[3.4M] is a solution, maybe not the best.
 	// Looking for something smaller, we should iterate no more than
