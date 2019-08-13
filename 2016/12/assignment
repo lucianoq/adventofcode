@@ -18,7 +18,7 @@
    puzzle input) is easy to extract, but the code it uses is strange: it's
    assembunny code designed for the [2]new computer you just assembled.
    You'll have to execute the code and get the password.
-
+b
    The assembunny code you've extracted operates on four [3]registers ( a
    , b , c , and d ) that start at 0 and can hold any [4]integer .
    However, it seems to make use of only a few [5]instructions :
@@ -35,12 +35,12 @@
 
    For example:
 
-   cpy 41 a
-inc a
-inc a
-dec a
-jnz a 2
-dec a
+    cpy 41 a
+    inc a
+    inc a
+    dec a
+    jnz a 2
+    dec a
 
 
    The above code would set register a to 41 , increase its value by 2 ,
