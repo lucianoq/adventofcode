@@ -50,60 +50,59 @@ func Test_same(t *testing.T) {
 
 func Test_triples(t *testing.T) {
 	tests := []struct {
-		input string
-		want  map[string]bool
+		input  string
+		char   string
+		exists bool
 	}{
 		{
-			input: "abcdefghilmnopq",
-			want:  map[string]bool{},
+			input:  "abcdefghilmnopq",
+			char:   "",
+			exists: false,
 		},
 		{
-			input: "aa",
-			want:  map[string]bool{},
+			input:  "aa",
+			char:   "",
+			exists: false,
 		},
 		{
-			input: "aabbcc",
-			want:  map[string]bool{},
+			input:  "aabbcc",
+			char:   "",
+			exists: false,
 		},
 		{
-			input: "aaaaabbcc",
-			want: map[string]bool{
-				"a": true,
-			},
+			input:  "aaaaabbcc",
+			char:   "a",
+			exists: true,
 		},
 		{
-			input: "aaaabbbbcc",
-			want: map[string]bool{
-				"a": true,
-				"b": true,
-			},
+			input:  "aaaabbbbcc",
+			char:   "a",
+			exists: true,
 		},
 		{
-			input: "aaaaabbbbbccccc",
-			want: map[string]bool{
-				"a": true,
-				"b": true,
-				"c": true,
-			},
+			input:  "aaaaabbbbbccccc",
+			char:   "a",
+			exists: true,
 		},
 		{
-			input: "aaaaaaaaaaaaaabb",
-			want: map[string]bool{
-				"a": true,
-			},
+			input:  "aaaaaaaaaaaaaabb",
+			char:   "a",
+			exists: true,
 		},
 		{
-			input: "aaaaaaaaaaaaaabbbbb",
-			want: map[string]bool{
-				"a": true,
-				"b": true,
-			},
+			input:  "aaaaaaaaaaaaaabbbbb",
+			char:   "a",
+			exists: true,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.input, func(t *testing.T) {
-			if got := triples(tt.input); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("triples() = %v, want %v", got, tt.want)
+			gotChar, gotExists := triples(tt.input)
+			if gotChar != tt.char {
+				t.Errorf("triples() = %v, want %v", gotChar, tt.char)
+			}
+			if gotExists != tt.exists {
+				t.Errorf("triples() = %v, want %v", gotExists, tt.exists)
 			}
 		})
 	}
