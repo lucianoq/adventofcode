@@ -29,8 +29,8 @@
 
    For example, at time=0 , suppose you see the following arrangement:
 
-   Disc #1 has 5 positions; at time=0, it is at position 4.
-Disc #2 has 2 positions; at time=0, it is at position 1.
+    Disc #1 has 5 positions; at time=0, it is at position 4.
+    Disc #2 has 2 positions; at time=0, it is at position 1.
 
 
    If you press the button exactly at time=0 , the capsule would start to
@@ -54,6 +54,21 @@ Disc #2 has 2 positions; at time=0, it is at position 1.
    However, your situation has more than two discs; you've noted their
    positions in your puzzle input. What is the first time you can press
    the button to get a capsule?
+
+--- Part Two ---
+
+   After getting the first capsule (it contained a star! what great
+   fortune!), the machine detects your success and begins to rearrange
+   itself.
+
+   When it's done, the discs are back in their original configuration as
+   if it were time=0 again, but a new disc with 11 positions and starting
+   at position 0 has appeared exactly one second below the
+   previously-bottom disc.
+
+   With this new disc, and counting again starting from time=0 with the
+   configuration in your puzzle input, what is the first time you can
+   press the button to get another capsule?
 
 References
 
