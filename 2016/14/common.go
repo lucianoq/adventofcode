@@ -38,7 +38,8 @@ func run(hashFn Hash) {
 		}
 	}
 
-	// approved now could be greater than 64 items. I need to order items and take the first 64
+	// approved now could be greater than 64 items. I need to sort items and
+	// take the 64th
 	sort.Ints(approved)
 	fmt.Println(approved[63])
 }
@@ -57,6 +58,7 @@ func quintuples(s string) map[string]bool {
 	for i := 0; i < len(s)-4; i++ {
 		if same(s[i : i+5]) {
 			res[string(s[i])] = true
+			i += 4
 		}
 	}
 	return res

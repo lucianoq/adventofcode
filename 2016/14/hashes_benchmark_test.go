@@ -2,7 +2,6 @@ package main
 
 import "testing"
 
-
 func BenchmarkHashString(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		hashString("whatever", 0)

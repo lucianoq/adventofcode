@@ -18,7 +18,7 @@
    puzzle input) is easy to extract, but the code it uses is strange: it's
    assembunny code designed for the [2]new computer you just assembled.
    You'll have to execute the code and get the password.
-b
+
    The assembunny code you've extracted operates on four [3]registers ( a
    , b , c , and d ) that start at 0 and can hold any [4]integer .
    However, it seems to make use of only a few [5]instructions :
@@ -51,10 +51,19 @@ b
    After executing the assembunny code in your puzzle input, what value is
    left in register a ?
 
+--- Part Two ---
+
+   As you head down the fire escape to the monorail, you notice it didn't
+   start; register c needs to be initialized to the position of the
+   ignition key.
+
+   If you instead initialize register c to be 1 , what value is now left
+   in register a ?
+
 References
 
    1. https://www.google.com/search?q=tiger+lilies&tbm=isch
-   2. => adventofcode/2016/11
+   2. file:///home/luciano/pdev/adventofcode/2016/12/11
    3. https://en.wikipedia.org/wiki/Processor_register
    4. https://en.wikipedia.org/wiki/Integer
    5. https://en.wikipedia.org/wiki/Instruction_set
