@@ -73,6 +73,12 @@
    The first disk you have to fill has length 272 . Using the initial
    state in your puzzle input, what is the correct checksum ?
 
+--- Part Two ---
+
+   The second disk you have to fill has length 35651584 . Again using the
+   initial state in your puzzle input, what is the correct checksum for
+   this disk?
+
 References
 
    1. https://en.wikipedia.org/wiki/Dragon_curve
