@@ -19,8 +19,8 @@
    letters) and want to determine the next row (with tiles marked by
    numbers):
 
-   ABCDE
-12345
+    ABCDE
+    12345
 
 
    The type of tile 2 is based on the types of tiles A , B , and C ; the
@@ -57,29 +57,33 @@
    . Then, we continue on to the next row, using the same rules, and get
    ^^..^ . After determining two new rows, our map looks like this:
 
-   ..^^.
-.^^^^
-^^..^
+    ..^^.
+    .^^^^
+    ^^..^
 
 
    Here's a larger example with ten tiles per row and ten rows:
 
-   .^^.^.^^^^
-^^^...^..^
-^.^^.^.^^.
-..^^...^^^
-.^^^^.^^.^
-^^..^.^^..
-^^^^..^^^.
-^..^^^^.^^
-.^^^..^.^^
-^^.^^^..^^
+    .^^.^.^^^^
+    ^^^...^..^
+    ^.^^.^.^^.
+    ..^^...^^^
+    .^^^^.^^.^
+    ^^..^.^^..
+    ^^^^..^^^.
+    ^..^^^^.^^
+    .^^^..^.^^
+    ^^.^^^..^^
 
 
    In ten rows, this larger example has 38 safe tiles.
 
    Starting with the map in your puzzle input, in a total of 40 rows
    (including the starting row), how many safe tiles are there?
+
+--- Part Two ---
+
+   How many safe tiles are there in a total of 400000 rows ?
 
 References
 
