@@ -7,7 +7,7 @@
 test: test1 test2
 
 test1:
-	go test main1_test.go main1.go -v
+	go test -v main1*
 
 test2:
-	go test main2_test.go main2.go -v
+	go test -v main2*
