@@ -7,10 +7,10 @@ import (
 	"strings"
 )
 
-const input = "abcdefgh"
+var input = []byte("abcdefgh")
 
 func main() {
-	str := String(input)
+	str := input
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for scanner.Scan() {
@@ -22,77 +22,91 @@ func main() {
 			if ff[1] == "position" {
 				x, _ := strconv.Atoi(ff[2])
 				y, _ := strconv.Atoi(ff[5])
-				str.SwapPosition(x, y)
+				str = SwapPosition(str, x, y)
 			} else {
-				str.SwapLetters([]rune(ff[2])[0], []rune(ff[5])[0])
+				str = SwapLetters(str, []byte(ff[2])[0], []byte(ff[5])[0])
 			}
 
 		case "rotate":
 			if ff[1] == "based" {
-				str.RotateBasedOnLetter(ff[6])
+				x := []byte(ff[6])
+				str = RotateBasedOnLetter(str, x[0])
 			} else {
 				x, _ := strconv.Atoi(ff[2])
 				if ff[1] == "left" {
-					str.Rotate(-x)
+					str = RotateLeft(str, x)
 				} else {
-					str.Rotate(x)
+					str = RotateLeft(str, -x)
 				}
 			}
 		case "reverse":
 			x, _ := strconv.Atoi(ff[2])
 			y, _ := strconv.Atoi(ff[4])
-			str.Reverse(x, y)
+			str = Reverse(str, x, y)
 		case "move":
 			x, _ := strconv.Atoi(ff[2])
 			y, _ := strconv.Atoi(ff[5])
-			str.Move(x, y)
+			str = Move(str, x, y)
 		}
 	}
 }
 
-type String string
-
-func (s *String) SwapPosition(x, y int) {
-	str := []byte(*s)
-	str[x], str[y] = str[y], str[x]
-	*s = String(str)
+func SwapPosition(s []byte, x, y int) []byte {
+	newBuf := make([]byte, len(s))
+	copy(newBuf, s)
+	newBuf[x], newBuf[y] = s[y], s[x]
+	return s
 }
 
-func (s *String) SwapLetters(x, y rune) {
-	str := ""
-	for _, c := range string(*s) {
-		switch c {
+func SwapLetters(s []byte, x, y byte) []byte {
+	newBuf := make([]byte, len(s))
+	for i := range s {
+		switch s[i] {
 		case x:
-			str += string(x)
+			newBuf[i] = y
 		case y:
-			str += string(y)
+			newBuf[i] = x
 		default:
-			str += string(c)
+			newBuf[i] = s[i]
 		}
 	}
-	*s = String(str)
+	return newBuf
 }
 
-func (s *String) Move(x, y int) {
-	newString := "pippo"
+func Move(s []byte, x, y int) []byte {
+	newBuf := make([]byte, 0, len(s))
+	val := s[x]
 
-	*s = String(newString)
+	for i:=0; i<len(s); i++ {
+		newBuf = append(newBuf, )
+	}
+
+	if x < y {
+		newBuf = append(newBuf, s[:x]...)
+		newBuf = append(newBuf, s[x+1:]...)
+		newBuf = append(newBuf, ...)
+	}
+
+	return newBuf
 }
 
-func (s *String) Reverse(x, y int) {
-	newString := "pippo"
-
-	*s = String(newString)
+func reverse(a []byte) []byte {
+	b := make([]byte, len(a))
+	for i := 0; i < len(a); i++ {
+		opp := len(a) - i - 1
+		b[i] = a[opp]
+	}
+	return b
 }
 
-func (s *String) RotateBasedOnLetter(x string) {
-	newString := "pippo"
-
-	*s = String(newString)
+func Reverse(s []byte, x, y int) []byte {
+	return s
 }
 
-func (s *String) Rotate(x int) {
-	newString := "pippo"
+func RotateBasedOnLetter(s []byte, x byte) []byte {
+	return s
+}
 
-	*s = String(newString)
+func RotateLeft(s []byte, x int) []byte {
+	return s
 }
