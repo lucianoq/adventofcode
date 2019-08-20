@@ -17,6 +17,18 @@ func TestSwapPosition(t *testing.T) {
 			y:   0,
 			out: "ebcda",
 		},
+		{
+			in:  "abcde",
+			x:   2,
+			y:   2,
+			out: "abcde",
+		},
+		{
+			in:  "abcde",
+			x:   1,
+			y:   3,
+			out: "adcbe",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.in, func(t *testing.T) {
@@ -43,6 +55,18 @@ func TestSwapLetters(t *testing.T) {
 			y:   'b',
 			out: "edcba",
 		},
+		{
+			in:  "abcde",
+			x:   'a',
+			y:   'd',
+			out: "dbcae",
+		},
+		{
+			in:  "abcde",
+			x:   'c',
+			y:   'c',
+			out: "abcde",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.in, func(t *testing.T) {
@@ -67,6 +91,18 @@ func TestReverse(t *testing.T) {
 			in:  "edcba",
 			x:   0,
 			y:   4,
+			out: "abcde",
+		},
+		{
+			in:  "abcde",
+			x:   1,
+			y:   3,
+			out: "adcbe",
+		},
+		{
+			in:  "abcde",
+			x:   2,
+			y:   2,
 			out: "abcde",
 		},
 	}
@@ -139,6 +175,51 @@ func TestRotateLeft(t *testing.T) {
 			x:   1,
 			out: "bcdea",
 		},
+		{
+			in:  "abcde",
+			x:   2,
+			out: "cdeab",
+		},
+		{
+			in:  "abcde",
+			x:   3,
+			out: "deabc",
+		},
+		{
+			in:  "abcde",
+			x:   4,
+			out: "eabcd",
+		},
+		{
+			in:  "abcde",
+			x:   5,
+			out: "abcde",
+		},
+		{
+			in:  "abcde",
+			x:   -1,
+			out: "eabcd",
+		},
+		{
+			in:  "abcde",
+			x:   -2,
+			out: "deabc",
+		},
+		{
+			in:  "abcde",
+			x:   -3,
+			out: "cdeab",
+		},
+		{
+			in:  "abcde",
+			x:   -4,
+			out: "bcdea",
+		},
+		{
+			in:  "abcde",
+			x:   -5,
+			out: "abcde",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.in, func(t *testing.T) {
@@ -170,6 +251,24 @@ func TestMove(t *testing.T) {
 			y:   0,
 			out: "abdec",
 		},
+		{
+			in:  "abcde",
+			x:   0,
+			y:   4,
+			out: "bcdea",
+		},
+		{
+			in:  "abcde",
+			x:   4,
+			y:   0,
+			out: "eabcd",
+		},
+		{
+			in:  "a",
+			x:   0,
+			y:   0,
+			out: "a",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.in, func(t *testing.T) {
@@ -197,6 +296,47 @@ func TestRotateBasedOnLetter(t *testing.T) {
 			in:  "ecabd",
 			x:   'd',
 			out: "decab",
+		},
+
+		{
+			in:  "abcdefgh",
+			x:   'a',
+			out: "habcdefg",
+		},
+		{
+			in:  "abcdefgh",
+			x:   'b',
+			out: "ghabcdef",
+		},
+		{
+			in:  "abcdefgh",
+			x:   'c',
+			out: "fghabcde",
+		},
+		{
+			in:  "abcdefgh",
+			x:   'd',
+			out: "efghabcd",
+		},
+		{
+			in:  "abcdefgh",
+			x:   'e',
+			out: "cdefghab",
+		},
+		{
+			in:  "abcdefgh",
+			x:   'f',
+			out: "bcdefgha",
+		},
+		{
+			in:  "abcdefgh",
+			x:   'g',
+			out: "abcdefgh",
+		},
+		{
+			in:  "abcdefgh",
+			x:   'h',
+			out: "habcdefg",
 		},
 	}
 	for _, tt := range tests {
