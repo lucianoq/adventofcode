@@ -2,20 +2,32 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 	"strconv"
 	"strings"
 )
 
 type Device struct {
-	X, Y              int
+	P
 	Size, Used, Avail int
 }
 
-func parse() []Device {
-	var devices []Device
+type P struct {
+	X, Y int
+}
 
+type Grid map[P]Device
+
+func (g Grid) Copy() Grid {
+	targetMap := make(Grid)
+	for k, v := range g {
+		targetMap[k] = v
+	}
+	return targetMap
+}
+
+func parseGrid() Grid {
+	g := make(Grid)
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -26,16 +38,16 @@ func parse() []Device {
 			size, _ := strconv.Atoi(strings.TrimRight(ff[1], "T"))
 			used, _ := strconv.Atoi(strings.TrimRight(ff[2], "T"))
 			avail, _ := strconv.Atoi(strings.TrimRight(ff[3], "T"))
-			devices = append(devices, Device{
-				X:     x,
-				Y:     y,
+
+			g[P{x, y}] = Device{
+				P:     P{x, y},
 				Size:  size,
 				Used:  used,
 				Avail: avail,
-			})
+			}
 		}
 	}
-	return devices
+	return g
 }
 
 func extractCoordinates(s string) (int, int) {
@@ -43,40 +55,4 @@ func extractCoordinates(s string) (int, int) {
 	x, _ := strconv.Atoi(strings.TrimLeft(ff[1], "x"))
 	y, _ := strconv.Atoi(strings.TrimLeft(ff[2], "y"))
 	return x, y
-}
-
-func Print(devs []Device) {
-	type Point struct{ X, Y int }
-
-	m := make(map[Point]Device)
-
-	maxX, maxY := -1, -1
-	for _, d := range devs {
-		m[Point{X: d.X, Y: d.Y}] = d
-
-		if d.X > maxX {
-			maxX = d.X
-		}
-		if d.Y > maxY {
-			maxY = d.Y
-		}
-	}
-
-	fmt.Print("   ")
-	for i := 0; i <= maxX; i++ {
-		fmt.Printf("%6d ", i)
-	}
-	fmt.Println()
-
-	for j := 0; j <= maxY; j++ {
-		fmt.Printf("%3d ", j)
-		for i := 0; i <= maxX; i++ {
-			if d, ok := m[Point{X: i, Y: j}]; ok {
-				fmt.Printf("%3d/%2d ", d.Used, d.Size)
-			} else {
-				fmt.Println("wtf")
-			}
-		}
-		fmt.Println()
-	}
 }

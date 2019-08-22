@@ -5,11 +5,11 @@ import (
 )
 
 func main() {
-	devs := parse()
+	grid := parseGrid()
 
 	count := 0
-	for _, d1 := range devs {
-		for _, d2 := range devs {
+	for _, d1 := range grid {
+		for _, d2 := range grid {
 			if viable(d1, d2) {
 				count++
 			}
