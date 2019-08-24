@@ -6,20 +6,13 @@ const eggs = 12
 
 func main() {
 
-	// factorial of eggs
-	x := 1
-	for i := 1; i <= eggs; i++ {
-		x *= i
-	}
-
 	// 86 and 78 are constants found in line 20 and 21 of the input
-	x += 86 * 78
+	res := factorial(eggs) + 86*78
 
-	fmt.Println(x)
-
+	fmt.Println(res)
 }
 
-// Normal approach required ~ 59 seconds
+// Normal approach requires ~59 seconds
 func main2() {
 	parse()
 
@@ -30,4 +23,12 @@ func main2() {
 	}
 
 	fmt.Println(reg[0])
+}
+
+func factorial(n int) int {
+	x := 1
+	for i := 1; i <= n; i++ {
+		x *= i
+	}
+	return x
 }
