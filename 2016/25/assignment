@@ -49,8 +49,16 @@
    register a and cause the code to output a clock signal of 0 , 1 , 0 , 1
    ... repeating forever?
 
+--- Part Two ---
+
+   The antenna is ready. Now, all you need is the fifty stars required to
+   generate the signal for the sleigh, but you don't have enough.
+
+   You look toward the sky in desperation... suddenly noticing that a lone
+   star has been installed at the top of the antenna! Only 49 more to go.
+
 References
 
    1. https://en.wikipedia.org/wiki/Clock_signal
-   2. => adventofcode/2016/12
-   3. => adventofcode/2016/23
+   2. file:///home/lucianoq/dev/adventofcode/2016/25/12
+   3. file:///home/lucianoq/dev/adventofcode/2016/25/23
