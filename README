@@ -59,3 +59,60 @@ Checking   25      1      ok       299ms
                    2      ok         6ms
 
 ```
+
+
+#### 2016
+
+```
+           Day   Part   Result   Duration
+Checking    1      1      ok       115ms
+                   2      ok       109ms
+Checking    2      1      ok        52ms
+                   2      ok       109ms
+Checking    3      1      ok        53ms
+                   2      ok        54ms
+Checking    4      1      ok        69ms
+                   2      ok        63ms
+Checking    5      1      ok      1252ms
+                   2      ok      2906ms
+Checking    6      1      ok       111ms
+                   2      ok       110ms
+Checking    7      1      ok       110ms
+                   2      ok       111ms
+Checking    8      1      ok       106ms
+                   2      ok       200ms
+Checking    9      1      ok       108ms
+                   2      ok       109ms
+Checking   10      1      ok       113ms
+                   2      ok       110ms
+Checking   11      1      ok       336ms
+                   2      ok      1345ms
+Checking   12      1      ok       196ms
+                   2      ok      2487ms
+Checking   13      1      ok       110ms
+                   2      ok       106ms
+Checking   14      1      ok       138ms
+                   2      ok      5600ms
+Checking   15      1      ok       109ms
+                   2      ok       137ms
+Checking   16      1      ok       106ms
+                   2      ok       192ms
+Checking   17      1      ok       115ms
+                   2      ok       143ms
+Checking   18      1      ok       107ms
+                   2      ok      1833ms
+Checking   19      1      ok        51ms
+                   2      ok       107ms
+Checking   20      1      ok       115ms
+                   2      ok       108ms
+Checking   21      1      ok       112ms
+                   2      ok       110ms
+Checking   22      1      ok       132ms
+                   2      ok       115ms
+Checking   23      1      ok       115ms
+                   2      ok       115ms
+Checking   24      1      ok       217ms
+                   2      ok       384ms
+Checking   25      1      ok       233ms
+                   2      ok         4ms
+```
