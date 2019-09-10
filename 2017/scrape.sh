@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-YEAR=2016
+YEAR=2017
 COOKIE_TOKEN="$2"
 DAY="$1"
 
