@@ -7,11 +7,11 @@
    location marked 1 and then counting up while spiraling outward. For
    example, the first few squares are allocated like this:
 
-    17  16  15  14  13
-    18   5   4   3  12
-    19   6   1   2  11
-    20   7   8   9  10
-    21  22  23---> ...
+        17  16  15  14  13
+        18   5   4   3  12
+        19   6   1   2  11
+        20   7   8   9  10
+        21  22  23---> ...
 
 
 
@@ -52,11 +52,11 @@
    Once a square is written, its value does not change. Therefore, the
    first few squares would receive the following values:
 
-    147  142  133  122   59
-    304    5    4    2   57
-    330   10    1    1   54
-    351   11   23   25   26
-    362  747  806--->   ...
+        147  142  133  122   59
+        304    5    4    2   57
+        330   10    1    1   54
+        351   11   23   25   26
+        362  747  806--->   ...
 
 
    What is the first value written that is larger than your puzzle input?
