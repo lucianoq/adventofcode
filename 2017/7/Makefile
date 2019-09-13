@@ -1,5 +1,5 @@
 1:
-	#go run main1.go <input
+	sh main1.sh
 
 2:
-	#go run main2.go <input
+	go run main2.go <input
