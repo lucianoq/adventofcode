@@ -7,56 +7,56 @@ import (
 
 func Test_hash(t *testing.T) {
 	type args struct {
-		list []int
+		list []uint8
 		pos  int
 		l    int
 	}
 	tests := []struct {
 		name string
 		args args
-		want []int
+		want []uint8
 	}{
 		{
 			name: "1",
 			args: args{
-				list: []int{0, 1, 2, 3, 4},
+				list: []uint8{0, 1, 2, 3, 4},
 				pos:  0,
 				l:    3,
 			},
-			want: []int{2, 1, 0, 3, 4},
+			want: []uint8{2, 1, 0, 3, 4},
 		},
 		{
 			name: "2",
 			args: args{
-				list: []int{2, 1, 0, 3, 4},
+				list: []uint8{2, 1, 0, 3, 4},
 				pos:  3,
 				l:    4,
 			},
-			want: []int{4, 3, 0, 1, 2},
+			want: []uint8{4, 3, 0, 1, 2},
 		},
 		{
 			name: "3",
 			args: args{
-				list: []int{4, 3, 0, 1, 2},
+				list: []uint8{4, 3, 0, 1, 2},
 				pos:  3,
 				l:    1,
 			},
-			want: []int{4, 3, 0, 1, 2},
+			want: []uint8{4, 3, 0, 1, 2},
 		},
 		{
 			name: "4",
 			args: args{
-				list: []int{4, 3, 0, 1, 2},
+				list: []uint8{4, 3, 0, 1, 2},
 				pos:  1,
 				l:    5,
 			},
-			want: []int{3, 4, 2, 1, 0},
+			want: []uint8{3, 4, 2, 1, 0},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := hash(tt.args.list, tt.args.pos, tt.args.l); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("hash() = %v, want %v", got, tt.want)
+			if got := knot(tt.args.list, tt.args.pos, tt.args.l); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("knot() = %v, want %v", got, tt.want)
 			}
 		})
 	}

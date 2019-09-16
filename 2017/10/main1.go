@@ -8,54 +8,34 @@ import (
 	"strings"
 )
 
-const size = 256
-
 func main() {
+	buf, _ := ioutil.ReadAll(os.Stdin)
+	input := parseInts(buf)
+
+	fmt.Println(hash(input))
+}
+
+func parseInts(buf []byte) []uint8 {
+	list := make([]uint8, 0)
+	items := strings.Split(string(buf), ",")
+	for _, i := range items {
+		n, _ := strconv.ParseUint(i, 10, 8)
+		list = append(list, uint8(n))
+	}
+	return list
+}
+
+func hash(input []uint8) int {
 	list := createList(size)
+
 	pos := 0
 	skipSize := 0
-	input := parse()
 
 	for _, l := range input {
-		list = hash(list, pos, l)
-		pos += l + skipSize
+		list = knot(list, pos, int(l))
+		pos += int(l) + skipSize
 		skipSize++
 	}
 
-	fmt.Println(list[0] * list[1])
-}
-
-func parse() []int {
-	list := make([]int, 0)
-	text, _ := ioutil.ReadAll(os.Stdin)
-	items := strings.Split(string(text), ",")
-	for _, i := range items {
-		n, _ := strconv.Atoi(i)
-		list = append(list, n)
-	}
-	return list
-}
-
-func createList(length int) []int {
-	list := make([]int, length)
-	for i := 0; i < length; i++ {
-		list[i] = i
-	}
-	return list
-}
-
-func hash(list []int, pos int, l int) []int {
-	ls := make([]int, len(list))
-
-	j := pos
-	for i := l + pos - 1; j < l+pos; i-- {
-		ls[j%len(list)] = list[i%len(list)]
-		j++
-	}
-
-	for i := l + pos; j < pos+len(list); i++ {
-		ls[j%len(list)] = list[i%len(list)]
-		j++
-	}
-	return ls
+	return int(list[0]) * int(list[1])
 }
