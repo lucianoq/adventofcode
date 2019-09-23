@@ -40,16 +40,16 @@
 
    For example:
 
-   set a 1
-add a 2
-mul a a
-mod a 5
-snd a
-set a 0
-rcv a
-jgz a -1
-set a 1
-jgz a -2
+        set a 1
+        add a 2
+        mul a a
+        mod a 5
+        snd a
+        set a 0
+        rcv a
+        jgz a -1
+        set a 1
+        jgz a -2
 
 
      * The first four instructions set a to 1 , add 2 to it, square it,
@@ -97,13 +97,13 @@ jgz a -2
 
    For example:
 
-   snd 1
-snd 2
-snd p
-rcv a
-rcv b
-rcv c
-rcv d
+        snd 1
+        snd 2
+        snd p
+        rcv a
+        rcv b
+        rcv c
+        rcv d
 
 
    Both programs begin by sending three values to the other. Program 0
