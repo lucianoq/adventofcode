@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+YEAR="$1"
+
 printf "%11sDay   Part   Result   Duration\n" ""
 
 for i in $(seq 1 25); do
-  cd "$i"
+  cd "$YEAR/$i" || exit
   for part in 1 2; do
 
     [[ $part -eq 1 ]] && printf 'Checking%5s' "$i" || printf '%13s' ""
@@ -24,5 +26,5 @@ for i in $(seq 1 25); do
     printf '%8.4sms\n' "${ELAPSED}"
 
   done
-  cd ..
+  cd ../..
 done 2>/dev/null
