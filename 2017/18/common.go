@@ -7,12 +7,8 @@ import (
 	"strings"
 )
 
-type OpCode int
-
 type Cmd struct {
-	Op string
-	X  string
-	Y  string
+	Op, X, Y string
 }
 
 func parse() []Cmd {
