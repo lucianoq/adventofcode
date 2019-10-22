@@ -86,9 +86,9 @@
    through 15 , but the manual doesn't say which is which. For example,
    suppose you capture the following sample:
 
-   Before: [3, 2, 1, 1]
-9 2 1 2
-After:  [3, 2, 2, 1]
+        Before: [3, 2, 1, 1]
+        9 2 1 2
+        After:  [3, 2, 2, 1]
 
 
    This sample shows the effect of the instruction 9 2 1 2 on the

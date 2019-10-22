@@ -12,13 +12,11 @@
    current position as X , and where north is up, the area you're in might
    look like this:
 
-   #####
-#.|.#
-#-###
-#.|X#
-#####
-
-
+        #####
+        #.|.#
+        #-###
+        #.|X#
+        #####
 
    You get the attention of a passing construction Elf and ask for a map.
    "I don't have time to draw out a map of this place - it's huge .
@@ -60,24 +58,24 @@
    consider the branch, this is what you know about the map so far, with
    doors you aren't sure about marked with a ? :
 
-   #?#?#?#?#
-?.|.|.|.?
-#?#?#?#-#
-    ?X|.?
-    #?#?#
+        #?#?#?#?#
+        ?.|.|.|.?
+        #?#?#?#-#
+            ?X|.?
+            #?#?#
 
 
    After this point, there is (NEEE|SSE(EE|N)) . This gives you exactly
    two options: NEEE and SSE(EE|N) . By following NEEE , the map now looks
    like this:
 
-   #?#?#?#?#
-?.|.|.|.?
-#-#?#?#?#
-?.|.|.|.?
-#?#?#?#-#
-    ?X|.?
-    #?#?#
+        #?#?#?#?#
+        ?.|.|.|.?
+        #-#?#?#?#
+        ?.|.|.|.?
+        #?#?#?#-#
+            ?X|.?
+            #?#?#
 
 
    Now, only SSE(EE|N) remains. Because it is in the same parenthesized
@@ -87,29 +85,29 @@
    that, you can either move east twice or north once. This information
    fills in the rest of the doors:
 
-   #?#?#?#?#
-?.|.|.|.?
-#-#?#?#?#
-?.|.|.|.?
-#-#?#?#-#
-?.?.?X|.?
-#-#-#?#?#
-?.|.|.|.?
-#?#?#?#?#
+        #?#?#?#?#
+        ?.|.|.|.?
+        #-#?#?#?#
+        ?.|.|.|.?
+        #-#?#?#-#
+        ?.?.?X|.?
+        #-#-#?#?#
+        ?.|.|.|.?
+        #?#?#?#?#
 
 
    Once you've followed all possible routes, you know the remaining
    unknown parts are all walls, producing a finished map of the facility:
 
-   #########
-#.|.|.|.#
-#-#######
-#.|.|.|.#
-#-#####-#
-#.#.#X|.#
-#-#-#####
-#.|.|.|.#
-#########
+        #########
+        #.|.|.|.#
+        #-#######
+        #.|.|.|.#
+        #-#####-#
+        #.#.#X|.#
+        #-#-#####
+        #.|.|.|.#
+        #########
 
 
    Sometimes, a list of options can have an empty option , like
@@ -119,17 +117,17 @@
 
    ^ENNWSWW(NEWS|)SSSEEN(WNSE|)EE(SWEN|)NNN$
 
-###########
-#.|.#.|.#.#
-#-###-#-#-#
-#.|.|.#.#.#
-#-#####-#-#
-#.#.#X|.#.#
-#-#-#####-#
-#.#.|.|.|.#
-#-###-###-#
-#.|.|.#.|.#
-###########
+        ###########
+        #.|.#.|.#.#
+        #-###-#-#-#
+        #.|.|.#.#.#
+        #-#####-#-#
+        #.#.#X|.#.#
+        #-#-#####-#
+        #.#.|.|.|.#
+        #-###-###-#
+        #.|.|.#.|.#
+        ###########
 
 
    This regex has one main route which, at three locations, can optionally
@@ -160,42 +158,44 @@
    Here are a few more examples:
 
    Regex: ^ESSWWN(E|NNENN(EESS(WNSE|)SSS|WWWSSSSE(SW|NNNE)))$
-Furthest room requires passing 23 doors
 
-#############
-#.|.|.|.|.|.#
-#-#####-###-#
-#.#.|.#.#.#.#
-#-#-###-#-#-#
-#.#.#.|.#.|.#
-#-#-#-#####-#
-#.#.#.#X|.#.#
-#-#-#-###-#-#
-#.|.#.|.#.#.#
-###-#-###-#-#
-#.|.#.|.|.#.#
-#############
+        Furthest room requires passing 23 doors
+
+        #############
+        #.|.|.|.|.|.#
+        #-#####-###-#
+        #.#.|.#.#.#.#
+        #-#-###-#-#-#
+        #.#.#.|.#.|.#
+        #-#-#-#####-#
+        #.#.#.#X|.#.#
+        #-#-#-###-#-#
+        #.|.#.|.#.#.#
+        ###-#-###-#-#
+        #.|.#.|.|.#.#
+        #############
 
 
 
    Regex: ^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$
-Furthest room requires passing 31 doors
 
-###############
-#.|.|.|.#.|.|.#
-#-###-###-#-#-#
-#.|.#.|.|.#.#.#
-#-#########-#-#
-#.#.|.|.|.|.#.#
-#-#-#########-#
-#.#.#.|X#.|.#.#
-###-#-###-#-#-#
-#.|.#.#.|.#.|.#
-#-###-#####-###
-#.|.#.|.|.#.#.#
-#-#-#####-#-#-#
-#.#.|.|.|.#.|.#
-###############
+        Furthest room requires passing 31 doors
+
+        ###############
+        #.|.|.|.#.|.|.#
+        #-###-###-#-#-#
+        #.|.#.|.|.#.#.#
+        #-#########-#-#
+        #.#.|.|.|.|.#.#
+        #-#-#########-#
+        #.#.#.|X#.|.#.#
+        ###-#-###-#-#-#
+        #.|.#.#.|.#.|.#
+        #-###-#####-###
+        #.|.#.|.|.#.#.#
+        #-#-#####-#-#-#
+        #.#.|.|.|.#.|.#
+        ###############
 
 
    What is the largest number of doors you would be required to pass
@@ -203,6 +203,13 @@ Furthest room requires passing 31 doors
    path from your starting location to that room would require passing
    through the most doors; what is the fewest doors you can pass through
    to reach it?
+
+--- Part Two ---
+
+   Okay, so the facility is big .
+
+   How many rooms have a shortest path from your current location that
+   pass through at least 1000 doors?
 
 References
 
