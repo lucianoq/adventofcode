@@ -25,7 +25,9 @@ func main() {
 
 		for h := 0; h < Height; h++ {
 			for w := 0; w < Width; w++ {
+
 				idx := l*Layer + h*Width + w
+
 				pixel := buf[idx]
 				if pixel == '0' {
 					count0++

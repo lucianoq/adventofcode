@@ -10,15 +10,15 @@
    is in orbit around exactly one other object . An [1]orbit looks roughly
    like this:
 
-   \
-                   \
-                    |
-                    |
-AAA--> o            o <--BBB
-                    |
-                    |
-                   /
-                  /
+                          \
+                           \
+                            |
+                            |
+        AAA--> o            o <--BBB
+                            |
+                            |
+                           /
+                          /
 
 
    In this diagram, the object BBB is in orbit around AAA . The path that
@@ -37,26 +37,25 @@ AAA--> o            o <--BBB
 
    For example, suppose you have the following map:
 
-   COM)B
-B)C
-C)D
-D)E
-E)F
-B)G
-G)H
-D)I
-E)J
-J)K
-K)L
-
+        COM)B
+        B)C
+        C)D
+        D)E
+        E)F
+        B)G
+        G)H
+        D)I
+        E)J
+        J)K
+        K)L
 
    Visually, the above map of orbits looks like this:
 
-   G - H       J - K - L
-       /           /
-COM - B - C - D - E - F
-               \
-                I
+                G - H       J - K - L
+               /           /
+        COM - B - C - D - E - F
+                       \
+                        I
 
 
    In this visual representation, when two objects are connected by a
@@ -85,54 +84,36 @@ COM - B - C - D - E - F
 
    For example, suppose you have the following map:
 
-   COM)B
-B)C
-C)D
-D)E
-E)F
-B)G
-G)H
-D)I
-E)J
-J)K
-K)L
-K)YOU
-I)SAN
+        COM)B
+        B)C
+        C)D
+        D)E
+        E)F
+        B)G
+        G)H
+        D)I
+        E)J
+        J)K
+        K)L
+        K)YOU
+        I)SAN
 
 
    Visually, the above map of orbits looks like this:
 
-
-    YOU
-
-
-    /
-
-   G - H
-
-    J - K
-
-   - L
-       /
-
-    /
-
-   COM - B - C -
-
-    D - E
-
-   - F
-
-    \
-
-
-    I - SAN
-
+                                     YOU
+                                    /
+                   G - H       J - K - L
+                  /           /
+           COM - B - C - D - E - F
+                          \
+                           I - SAN
 
 
    In this example, YOU are in orbit around K , and SAN is in orbit around
    I . To move from K to I , a minimum of 4 orbital transfers are
    required:
+
      * K to J
      * J to E
      * E to D
@@ -140,18 +121,13 @@ I)SAN
 
    Afterward, the map of orbits looks like this:
 
-   G - H       J - K - L
-       /           /
-COM - B - C - D - E - F
-               \
-                I - SAN
-
-    \
-
-
-    YOU
-
-
+                G - H       J - K - L
+               /           /
+        COM - B - C - D - E - F
+                       \
+                        I - SAN
+                         \
+                          YOU
 
    What is the minimum number of orbital transfers required to move from
    the object YOU are orbiting to the object SAN is orbiting? (Between the

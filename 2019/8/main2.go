@@ -10,9 +10,7 @@ const (
 	Width  = 25
 	Height = 6
 	Layer  = Width * Height
-)
 
-const (
 	Black       byte = '0'
 	White       byte = '1'
 	Transparent byte = '2'
