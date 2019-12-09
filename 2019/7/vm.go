@@ -27,7 +27,7 @@ type VM struct {
 	Code   []int // source code and memory, list of int
 	Ip     int   // Instruction Pointer
 	Input  <-chan int
-	output chan<- int
+	Output chan<- int
 }
 
 func (v *VM) Load(filename string) {
@@ -80,7 +80,7 @@ func (v *VM) Run() {
 		case 4:
 			// write
 			param1 := v.getParam(v.Ip+1, cmd.Immediate(1))
-			v.output <- param1
+			v.Output <- param1
 			v.Ip += 2
 
 		case 5:
@@ -150,7 +150,7 @@ func NewVM(filename string, input <-chan int, output chan<- int) *VM {
 		Code:   nil,
 		Ip:     0,
 		Input:  input,
-		output: output,
+		Output: output,
 	}
 
 	vm.Load(filename)
