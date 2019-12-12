@@ -52,7 +52,7 @@ func findPeriod(ss [4]*Satellite) int {
 }
 
 func lcm(a, b int) int {
-	return a * b / gcd(a, b)
+	return a / gcd(a, b) * b
 }
 
 func gcd(a, b int) int {
