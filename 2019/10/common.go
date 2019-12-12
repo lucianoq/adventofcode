@@ -29,7 +29,6 @@ func parse() map[C]struct{} {
 	return res
 }
 
-
 func abs(x int) int {
 	if x < 0 {
 		return -x
