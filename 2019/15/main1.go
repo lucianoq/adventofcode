@@ -26,7 +26,6 @@ func bfs(grid map[C]int) int {
 		curr, toDo = toDo[0], toDo[1:]
 
 		if grid[curr] == Oxygen {
-			fmt.Println(curr)
 			break
 		}
 

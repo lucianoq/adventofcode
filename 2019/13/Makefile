@@ -3,3 +3,6 @@
 
 2:
 	go run main2.go cmd.go vm.go
+
+play:
+	go run main2_play.go cmd.go vm.go

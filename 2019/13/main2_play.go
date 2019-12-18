@@ -28,6 +28,22 @@ const (
 	Right = 1
 )
 
+func (t Tile) String() string {
+	switch t {
+	case Empty:
+		return "  "
+	case Wall:
+		return "██"
+	case Block:
+		return "🎄" // 🛸" // "▒"
+	case Paddle:
+		return "🎅" // ▬▬" // __" // "▂"
+	case Ball:
+		return "⚽" // "+"
+	}
+	return ""
+}
+
 func main() {
 	done := make(chan struct{})
 
@@ -66,6 +82,8 @@ func main() {
 
 		// read changes
 		for {
+			redraw(grid)
+
 			x, open := <-output
 			if !open {
 				fmt.Println(maxScore)
@@ -106,9 +124,19 @@ func main() {
 				input <- Noop
 			}
 
-			time.Sleep(30 * time.Millisecond)
+			time.Sleep(40 * time.Millisecond)
 		}
 	}()
 
 	<-done
+}
+
+func redraw(grid map[C]Tile) {
+	fmt.Print("\033[2J\033[H")
+	for j := 0; j < 21; j++ {
+		for i := 0; i < 36; i++ {
+			fmt.Print(grid[C{i, j}])
+		}
+		fmt.Print("\n\r")
+	}
 }
