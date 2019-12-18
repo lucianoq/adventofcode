@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	done := make(chan struct{})
@@ -16,11 +19,18 @@ func main() {
 	}()
 
 	go func() {
+		last := 0
 		for x := range output {
 			if x > 127 {
 				fmt.Println(x)
 				return
 			}
+			fmt.Print(string(x))
+			if x == '\n' && last == '\n' {
+				time.Sleep(100 * time.Millisecond)
+				fmt.Print("\033[2J\033[H")
+			}
+			last = x
 		}
 	}()
 
@@ -37,7 +47,7 @@ func main() {
 	send(input, "R,12,L,8,L,10")
 
 	// continuous video feed
-	send(input, "n")
+	send(input, "y")
 
 	<-done
 }
