@@ -87,7 +87,7 @@ func (c Cmd) Run(lastValue, countAlternate *int) {
 			// exit
 			cursor = math.MaxInt64 - 1
 		}
-		*countAlternate ++
+		*countAlternate++
 		*lastValue = x
 	}
 }
