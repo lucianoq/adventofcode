@@ -22,8 +22,8 @@
         #########
 
 
-   Starting from the entrance ( @ ), you can only access a large door ( A
-   ) and a key ( a ). Moving toward the door doesn't help you, but you can
+   Starting from the entrance ( @ ), you can only access a large door ( A )
+   and a key ( a ). Moving toward the door doesn't help you, but you can
    move 2 steps to collect the key, unlocking A in the process:
 
         #########
@@ -91,7 +91,6 @@
    grand total of 86 steps.
 
    Here are a few more examples:
-     *
 
         ########################
         #...............b.C.D.f#
@@ -101,7 +100,6 @@
 
 
        Shortest path is 132 steps: b , a , c , d , f , e , g
-     *
 
         #################
         #i.G..c...e..H.p#
@@ -116,7 +114,6 @@
 
        Shortest paths are 136 steps;
        one is: a , f , b , j , g , n , h , d , l , o , e , p , c , i , k , m
-     *
 
         ########################
         #@..............ac.GI.b#
@@ -172,8 +169,8 @@
    instantly unlocks any corresponding doors, regardless of the vault in
    which the key or door is found.
 
-   For example, in the map above, the top-left robot first collects key a
-   , unlocking door A in the bottom-right vault:
+   For example, in the map above, the top-left robot first collects key a,
+   unlocking door A in the bottom-right vault:
 
         #######
         #@.#Cd#
