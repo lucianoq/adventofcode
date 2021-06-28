@@ -3,13 +3,13 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"log"
+	"io"
 	"os"
 	"strings"
 )
 
 func main() {
-	tests := read1()
+	tests, instructions := read(os.Stdin)
 
 	for _, t := range tests {
 		for idx, f := range opFuncs {
@@ -23,7 +23,6 @@ func main() {
 
 	Solve()
 
-	instructions := read2()
 	register = [4]int{0, 0, 0, 0}
 	for _, i := range instructions {
 		solved[i.OpCode](i.A, i.B, i.C)
@@ -54,18 +53,22 @@ type Test struct {
 	After  [4]int
 }
 
-func read1() []Test {
+func read(reader io.Reader) ([]Test, []Instruction) {
 	tests := make([]Test, 0)
 
-	f, _ := os.Open("input1")
-	scanner := bufio.NewScanner(f)
+	scanner := bufio.NewScanner(reader)
 
+	emptyLines := 0
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
 		if line == "" {
+			emptyLines++
+			if emptyLines == 2 {
+				break
+			}
 			continue
 		}
-
+		emptyLines = 0
 		if strings.HasPrefix(line, "Before") {
 			var t Test
 
@@ -84,17 +87,8 @@ func read1() []Test {
 			tests = append(tests, t)
 		}
 	}
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-	return tests
-}
 
-func read2() []Instruction {
 	instructions := make([]Instruction, 0)
-
-	f, _ := os.Open("input2")
-	scanner := bufio.NewScanner(f)
 
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
@@ -112,8 +106,6 @@ func read2() []Instruction {
 			C:      c,
 		})
 	}
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-	return instructions
+
+	return tests, instructions
 }
