@@ -1,45 +1,46 @@
 package main
 
-import "fmt"
-
 type G struct {
 	ID         int
 	NumUnits   int
 	HP         int
 	AttDamage  int
 	AttType    AttackType
-	Weaknesses []AttackType
-	Immunities []AttackType
 	Initiative int
+	Weaknesses map[AttackType]struct{}
+	Immunities map[AttackType]struct{}
 	Team       Team
 }
 
-func (g G) String() string {
-	return fmt.Sprintf(
-		"(id=%d) Units:%5d,\tHP:%6d,\tEP:%6d,\tIni:%4d,\tAD:%5d,\tAT:%s,\timmune:%s,\t\tweak:%s [%s]",
-		g.ID,
-		g.NumUnits,
-		g.HP,
-		g.EffectivePower(),
-		g.Initiative,
-		g.AttDamage,
-		g.AttType,
-		g.Immunities,
-		g.Weaknesses,
-		g.Team,
-	)
+func (g *G) Copy() *G {
+	return &G{
+		ID:         g.ID,
+		NumUnits:   g.NumUnits,
+		HP:         g.HP,
+		AttDamage:  g.AttDamage,
+		AttType:    g.AttType,
+		Initiative: g.Initiative,
+		Weaknesses: g.Weaknesses,
+		Immunities: g.Immunities,
+		Team:       g.Team,
+	}
 }
 
-func (g G) EffectivePower() int {
+func (g *G) EffectivePower() int {
 	return g.NumUnits * g.AttDamage
 }
 
-func (g G) WouldDeal(enemy *G) int {
-	if g.AttType.IsIn(enemy.Immunities) {
+// WouldDeal
+// if the defending group is immune to the attacking group's attack type,
+// the defending group instead takes no damage; if the defending group is
+// weak to the attacking group's attack type, the defending group instead
+// takes double damage.
+func (g *G) WouldDeal(enemy *G) int {
+	if _, ok := enemy.Immunities[g.AttType]; ok {
 		return 0
 	}
 
-	if g.AttType.IsIn(enemy.Weaknesses) {
+	if _, ok := enemy.Weaknesses[g.AttType]; ok {
 		return g.EffectivePower() * 2
 	}
 

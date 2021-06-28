@@ -26,12 +26,3 @@ func (at AttackType) String() string {
 		return "unknown"
 	}
 }
-
-func (at AttackType) IsIn(list []AttackType) bool {
-	for _, t := range list {
-		if at == t {
-			return true
-		}
-	}
-	return false
-}

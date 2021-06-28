@@ -2,17 +2,17 @@ package main
 
 import (
 	"bufio"
+	"io"
 	"log"
-	"os"
 	"regexp"
 	"strconv"
 	"strings"
 )
 
-func parse() []*G {
+func parse(reader io.Reader) []*G {
 	re := regexp.MustCompile(`(\d+) units each with (\d+) hit points (\(.*\) )?with an attack that does (\d+) (.*) damage at initiative (\d+)`)
 
-	scanner := bufio.NewScanner(os.Stdin)
+	scanner := bufio.NewScanner(reader)
 
 	immune := true
 	var groups []*G
@@ -39,9 +39,17 @@ func parse() []*G {
 			group.AttDamage, _ = strconv.Atoi(match[4])
 			group.AttType = parseAttType(match[5])
 			group.Initiative, _ = strconv.Atoi(match[6])
+
+			group.Immunities = map[AttackType]struct{}{}
 			immunities, weaknesses := parseBonusMalus(match[3])
-			group.Immunities = immunities
-			group.Weaknesses = weaknesses
+			for _, i := range immunities {
+				group.Immunities[i] = struct{}{}
+			}
+
+			group.Weaknesses = map[AttackType]struct{}{}
+			for _, w := range weaknesses {
+				group.Weaknesses[w] = struct{}{}
+			}
 
 			if immune {
 				group.Team = ImmuneSystem
