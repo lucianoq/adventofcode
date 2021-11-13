@@ -2,8 +2,6 @@ package main
 
 import "testing"
 
-// var pat = []int{0, 1, 0, -1}
-
 func Test_pattern1(t *testing.T) {
 	t.Parallel()
 	tests := []struct {
