@@ -7,8 +7,6 @@ import (
 	"os"
 	"regexp"
 	"strconv"
-
-	"github.com/fatih/color"
 )
 
 type C struct{ X, Y int }
@@ -108,11 +106,11 @@ func (g *Ground) Print() {
 			case Empty:
 				fmt.Print(" ")
 			case Clay:
-				fmt.Print(color.YellowString("#"))
+				fmt.Print("#")
 			case Water:
-				fmt.Print(color.BlueString("|"))
+				fmt.Print("|")
 			case SettledWater:
-				fmt.Print(color.BlueString("~"))
+				fmt.Print("~")
 			}
 		}
 		fmt.Println()
