@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"log"
-)
+import "fmt"
 
 func main() {
 	vault := parse()

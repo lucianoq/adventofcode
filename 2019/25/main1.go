@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 var solution = []string{
 	"west", "south", "take pointer",
