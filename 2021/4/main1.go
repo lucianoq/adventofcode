@@ -5,12 +5,15 @@ import "fmt"
 func main() {
 	draws, boards := parse()
 
-	for _, d := range draws {
-		for _, b := range boards {
-			b.Mark(d)
+	drawn := map[int]struct{}{}
 
-			if b.Wins() {
-				fmt.Println(d * b.SumUnmarked())
+	for _, d := range draws {
+
+		drawn[d] = struct{}{}
+
+		for _, b := range boards {
+			if b.Wins(drawn) {
+				fmt.Println(d * b.SumUnmarked(drawn))
 				return
 			}
 		}

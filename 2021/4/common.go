@@ -7,26 +7,14 @@ import (
 	"strings"
 )
 
-type Board struct {
-	grid   [5][5]int
-	marked [5][5]bool
-}
+type Board [5][5]int
 
-func (b *Board) Mark(num int) {
-	for i := 0; i < 5; i++ {
-		for j := 0; j < 5; j++ {
-			if b.grid[i][j] == num {
-				b.marked[i][j] = true
-			}
-		}
-	}
-}
-
-func (b *Board) Wins() bool {
+func (b *Board) Wins(drawn map[int]struct{}) bool {
 Row:
 	for i := 0; i < 5; i++ {
 		for j := 0; j < 5; j++ {
-			if !b.marked[i][j] {
+			_, marked := drawn[b[i][j]]
+			if !marked {
 				continue Row
 			}
 		}
@@ -36,7 +24,8 @@ Row:
 Column:
 	for j := 0; j < 5; j++ {
 		for i := 0; i < 5; i++ {
-			if !b.marked[i][j] {
+			_, marked := drawn[b[i][j]]
+			if !marked {
 				continue Column
 			}
 		}
@@ -46,12 +35,13 @@ Column:
 	return false
 }
 
-func (b *Board) SumUnmarked() int {
+func (b *Board) SumUnmarked(drawn map[int]struct{}) int {
 	sumUnmarked := 0
 	for i := 0; i < 5; i++ {
 		for j := 0; j < 5; j++ {
-			if !b.marked[i][j] {
-				sumUnmarked += b.grid[i][j]
+			_, marked := drawn[b[i][j]]
+			if !marked {
+				sumUnmarked += b[i][j]
 			}
 		}
 	}
@@ -84,14 +74,13 @@ func parse() ([]int, []*Board) {
 
 func readBoard(scanner *bufio.Scanner) *Board {
 	board := &Board{}
-
 	for i := 0; i < 5; i++ {
 		scanner.Scan()
 		line := strings.ReplaceAll(scanner.Text(), "  ", " ")
 		ff := strings.Split(strings.TrimSpace(line), " ")
 		for j := 0; j < 5; j++ {
 			num, _ := strconv.Atoi(ff[j])
-			board.grid[i][j] = num
+			board[i][j] = num
 		}
 	}
 	return board
