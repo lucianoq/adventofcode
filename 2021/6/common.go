@@ -25,13 +25,11 @@ func parse() map[int]int {
 	return timers
 }
 
-func evolve(timers map[int]int) map[int]int {
-	newTimers := map[int]int{}
-
-	newTimers[8] = timers[0]
-	newTimers[6] = timers[0]
-	for i := 1; i <= 8; i++ {
-		newTimers[i-1] += timers[i]
+func evolve(timers map[int]int) {
+	for i := 0; i <= 8; i++ {
+		timers[i-1] = timers[i]
 	}
-	return newTimers
+	timers[8] = timers[-1]
+	timers[6] += timers[-1]
+	timers[-1] = 0
 }

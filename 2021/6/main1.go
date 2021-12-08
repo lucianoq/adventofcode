@@ -6,7 +6,7 @@ func main() {
 	timers := parse()
 
 	for i := 0; i < 80; i++ {
-		timers = evolve(timers)
+		evolve(timers)
 	}
 
 	sum := 0
