@@ -1,8 +1,9 @@
 package main
 
 import (
-	"io/ioutil"
+	"bufio"
 	"log"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -15,7 +16,7 @@ type VM struct {
 	RelativeBase int
 }
 
-func NewVM(filename string, input <-chan int, output chan<- int) *VM {
+func NewVM(input <-chan int, output chan<- int) *VM {
 	vm := &VM{
 		Code:   nil,
 		Ip:     0,
@@ -23,17 +24,15 @@ func NewVM(filename string, input <-chan int, output chan<- int) *VM {
 		Output: output,
 	}
 
-	vm.Load(filename)
+	vm.Load()
 
 	return vm
 }
 
-func (vm *VM) Load(filename string) {
-	buf, err := ioutil.ReadFile(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	listStr := strings.Split(strings.TrimSpace(string(buf)), ",")
+func (vm *VM) Load() {
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	listStr := strings.Split(strings.TrimSpace(scanner.Text()), ",")
 	code := make(map[int]int, len(listStr))
 
 	for i := range listStr {

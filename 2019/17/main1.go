@@ -9,7 +9,7 @@ func main() {
 	output := make(chan int, 0)
 
 	go func() {
-		NewVM("input", input, output).Run()
+		NewVM(input, output).Run()
 		close(output)
 	}()
 

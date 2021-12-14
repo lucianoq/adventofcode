@@ -6,19 +6,24 @@ import (
 )
 
 func main() {
-	done := make(chan struct{})
 	input := make(chan int, 0)
 	output := make(chan int, 0)
 
+	done1 := make(chan struct{})
 	go func() {
-		vm := NewVM("input", input, output)
+		vm := NewVM(input, output)
 		vm.Code[0] = 2
 		vm.Run()
 		close(output)
-		done <- struct{}{}
+		done1 <- struct{}{}
 	}()
 
+	done2 := make(chan struct{})
 	go func() {
+		defer func() {
+			done2 <- struct{}{}
+		}()
+
 		last := 0
 		for x := range output {
 			if x > 127 {
@@ -49,7 +54,8 @@ func main() {
 	// continuous video feed
 	send(input, "y")
 
-	<-done
+	<-done1
+	<-done2
 }
 
 func send(input chan<- int, s string) {
