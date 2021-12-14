@@ -81,10 +81,8 @@ func printDisplay(clean bool) {
 		for i := 0; i < width; i++ {
 			if display[i][j] {
 				fmt.Print("█")
-				//fmt.Print("#")
 			} else {
 				fmt.Print(" ")
-				//fmt.Print("·")
 			}
 		}
 		fmt.Println()
