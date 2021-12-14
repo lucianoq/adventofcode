@@ -12,7 +12,6 @@ const (
 )
 
 func main() {
-	done := make(chan struct{})
 
 	input := make(chan int, 0)
 	output := make(chan int, 0)
@@ -43,8 +42,8 @@ func main() {
 		}
 	}
 
+	done := make(chan struct{})
 	go func() {
-
 		var maxScore int
 
 		// read changes
