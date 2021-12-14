@@ -2,194 +2,352 @@
 
 Answers and Code.
 
+Following values include the `go run` compilation time.
+
 #### 2015
-
-```
-~/d/a/2015 >  ./test.sh
-           Day   Part   Result   Duration
-Checking    1      1      ok        96ms
-                   2      ok        13ms
-Checking    2      1      ok        84ms
-                   2      ok        88ms
-Checking    3      1      ok       179ms
-                   2      ok       183ms
-Checking    4      1      ok       287ms
-                   2      ok      3442ms
-Checking    5      1      ok       160ms
-                   2      ok       160ms
-Checking    6      1      ok       264ms
-                   2      ok       321ms
-Checking    7      1      ok       257ms
-                   2      ok       251ms
-Checking    8      1      ok       155ms
-                   2      ok       182ms
-Checking    9      1      ok       286ms
-                   2      ok       251ms
-Checking   10      1      ok       187ms
-                   2      ok       435ms
-Checking   11      1      ok       189ms
-                   2      ok       230ms
-Checking   12      1      ok        35ms
-                   2      ok        99ms
-Checking   13      1      ok       241ms
-                   2      ok       650ms
-Checking   14      1      ok       160ms
-                   2      ok       176ms
-Checking   15      1      ok       259ms
-                   2      ok       292ms
-Checking   16      1      ok       189ms
-                   2      ok       191ms
-Checking   17      1      ok       249ms
-                   2      ok       162ms
-Checking   18      1      ok       193ms
-                   2      ok       196ms
-Checking   19      1      ok       174ms
-                   2      ok       374ms
-Checking   20      1      ok      5164ms
-                   2      ok      5554ms
-Checking   21      1      ok       175ms
-                   2      ok       183ms
-Checking   22      1      ok      2508ms
-                   2      ok      2977ms
-Checking   23      1      ok       194ms
-                   2      ok       211ms
-Checking   24      1      ok      7555ms
-                   2      ok       320ms
-Checking   25      1      ok       299ms
-                   2      ok         6ms
-
-```
-
-
-#### 2016
-
 ```
            Day   Part   Result   Duration
-Checking    1      1      ok       115ms
+Checking    1      1      ok       145ms
+                   2      ok        22ms
+Checking    2      1      ok        54ms
+                   2      ok        52ms
+Checking    3      1      ok        96ms
+                   2      ok        95ms
+Checking    4      1      ok       190ms
+                   2      ok      2679ms
+Checking    5      1      ok       132ms
+                   2      ok       145ms
+Checking    6      1      ok       194ms
+                   2      ok       146ms
+Checking    7      1      ok       156ms
+                   2      ok       150ms
+Checking    8      1      ok       166ms
+                   2      ok        92ms
+Checking    9      1      ok       166ms
+                   2      ok       180ms
+Checking   10      1      ok       107ms
+                   2      ok       266ms
+Checking   11      1      ok       104ms
+                   2      ok       124ms
+Checking   12      1      ok        11ms
+                   2      ok        57ms
+Checking   13      1      ok       127ms
+                   2      ok       347ms
+Checking   14      1      ok        97ms
+                   2      ok        98ms
+Checking   15      1      ok       148ms
+                   2      ok       175ms
+Checking   16      1      ok       136ms
+                   2      ok       130ms
+Checking   17      1      ok       319ms
                    2      ok       109ms
-Checking    2      1      ok        52ms
-                   2      ok       109ms
-Checking    3      1      ok        53ms
-                   2      ok        54ms
-Checking    4      1      ok        69ms
-                   2      ok        63ms
-Checking    5      1      ok      1252ms
-                   2      ok      2906ms
-Checking    6      1      ok       111ms
-                   2      ok       110ms
-Checking    7      1      ok       110ms
-                   2      ok       111ms
-Checking    8      1      ok       106ms
-                   2      ok       200ms
-Checking    9      1      ok       108ms
-                   2      ok       109ms
-Checking   10      1      ok       113ms
-                   2      ok       110ms
-Checking   11      1      ok       336ms
-                   2      ok      1345ms
-Checking   12      1      ok       196ms
-                   2      ok      2487ms
-Checking   13      1      ok       110ms
-                   2      ok       106ms
-Checking   14      1      ok       138ms
-                   2      ok      5600ms
-Checking   15      1      ok       109ms
-                   2      ok       137ms
-Checking   16      1      ok       106ms
-                   2      ok       192ms
-Checking   17      1      ok       115ms
-                   2      ok       143ms
-Checking   18      1      ok       107ms
-                   2      ok      1833ms
-Checking   19      1      ok        51ms
-                   2      ok       107ms
-Checking   20      1      ok       115ms
-                   2      ok       108ms
-Checking   21      1      ok       112ms
-                   2      ok       110ms
-Checking   22      1      ok       132ms
-                   2      ok       115ms
-Checking   23      1      ok       115ms
-                   2      ok       115ms
-Checking   24      1      ok       217ms
-                   2      ok       384ms
-Checking   25      1      ok       233ms
-                   2      ok         4ms
-```
-
-#### 2017
-
-```
-           Day   Part   Result   Duration
-Checking    1      1      ok       122ms
-                   2      ok       111ms
-Checking    2      1      ok        51ms
-                   2      ok       113ms
-Checking    3      1      ok       146ms
-                   2      ok       108ms
-Checking    4      1      ok       109ms
-                   2      ok       112ms
-Checking    5      1      ok       111ms
-                   2      ok       176ms
-Checking    6      1      ok       107ms
-                   2      ok       108ms
-Checking    7      1      ok         8ms
-                   2      ok       109ms
-Checking    8      1      ok       109ms
-                   2      ok       111ms
-Checking    9      1      ok       112ms
-                   2      ok       113ms
-Checking   10      1      ok       108ms
-                   2      ok       122ms
-Checking   11      1      ok       111ms
-                   2      ok       111ms
-Checking   12      1      ok       113ms
-                   2      ok       114ms
-Checking   13      1      ok       110ms
-                   2      ok       294ms
-Checking   14      1      ok       547ms
-                   2      ok       551ms
-Checking   15      1      ok       304ms
-                   2      ok       423ms
-Checking   16      1      ok       111ms
-                   2      ok       121ms
-Checking   17      1      ok       112ms
-                   2      ok       592ms
-Checking   18      1      ok       111ms
-                   2      ok       313ms
-Checking   19      1      ok       180ms
+Checking   18      1      ok       136ms
+                   2      ok       116ms
+Checking   19      1      ok       107ms
+                   2      ok       302ms
+Checking   20      1      ok       222ms
                    2      ok       105ms
-Checking   20      1      ok       113ms
-                   2      ok       131ms
-Checking   21      1      ok       118ms
-                   2      ok      1342ms
-Checking   22      1      ok       112ms
-                   2      ok      1439ms
-Checking   23      1      ok       117ms
-                   2      ok       104ms
-Checking   24      1      ok      3025ms
-                   2      ok      2940ms
-Checking   25      1      ok       811ms
+Checking   21      1      ok       110ms
+                   2      ok       103ms
+Checking   22      1      ok      3182ms
+                   2      ok      3962ms
+Checking   23      1      ok       152ms
+                   2      ok       119ms
+Checking   24      1      ok      7041ms
+                   2      ok       221ms
+Checking   25      1      ok       150ms
                    2      ok         3ms
 ```
 
 
-#### 2019
-
+#### 2016
 ```
            Day   Part   Result   Duration
-Checking    1      1      ok       103ms
-                   2      ok       106ms
-Checking    2      1      ok       103ms
-                   2      ok       108ms
-Checking    3      1      ok       152ms
-                   2      ok       150ms
-Checking    4      1      ok       114ms
-                   2      ok       114ms
-Checking    5      1      ok       106ms
+Checking    1      1      ok       108ms
+                   2      ok        95ms
+Checking    2      1      ok        54ms
+                   2      ok        94ms
+Checking    3      1      ok        53ms
+                   2      ok        55ms
+Checking    4      1      ok        73ms
+                   2      ok        62ms
+Checking    5      1      ok      1249ms
+                   2      ok      2820ms
+Checking    6      1      ok        95ms
+                   2      ok        92ms
+Checking    7      1      ok        94ms
+                   2      ok       100ms
+Checking    8      1      ok        92ms
+                   2      ok        87ms
+Checking    9      1      ok        93ms
+                   2      ok        92ms
+Checking   10      1      ok        96ms
+                   2      ok        98ms
+Checking   11      1      ok       341ms
+                   2      ok      1146ms
+Checking   12      1      ok       176ms
+                   2      ok      2604ms
+Checking   13      1      ok       116ms
+                   2      ok       101ms
+Checking   14      1      ok       106ms
+                   2      ok      5296ms
+Checking   15      1      ok       106ms
+                   2      ok       121ms
+Checking   16      1      ok        89ms
+                   2      ok       168ms
+Checking   17      1      ok        91ms
+                   2      ok       127ms
+Checking   18      1      ok        87ms
+                   2      ok      1954ms
+Checking   19      1      ok        55ms
+                   2      ok        87ms
+Checking   20      1      ok        93ms
+                   2      ok        98ms
+Checking   21      1      ok       117ms
+                   2      ok       124ms
+Checking   22      1      ok       136ms
+                   2      ok        99ms
+Checking   23      1      ok       116ms
                    2      ok       105ms
-Checking    6      1      ok       114ms
-                   2      ok       115ms
-Checking    7      1      ok       126ms
+Checking   24      1      ok       230ms
+                   2      ok       458ms
+Checking   25      1      ok       188ms
+                   2      ok         3ms
+```
+
+#### 2017
+```
+           Day   Part   Result   Duration
+Checking    1      1      ok       119ms
+                   2      ok        99ms
+Checking    2      1      ok        49ms
+                   2      ok       103ms
+Checking    3      1      ok       122ms
+                   2      ok        88ms
+Checking    4      1      ok       107ms
+                   2      ok       123ms
+Checking    5      1      ok       119ms
+                   2      ok       174ms
+Checking    6      1      ok        91ms
+                   2      ok        90ms
+Checking    7      1      ok         7ms
+                   2      ok       103ms
+Checking    8      1      ok        95ms
+                   2      ok       106ms
+Checking    9      1      ok       114ms
+                   2      ok        97ms
+Checking   10      1      ok        98ms
+                   2      ok       105ms
+Checking   11      1      ok        93ms
+                   2      ok        93ms
+Checking   12      1      ok       115ms
+                   2      ok       121ms
+Checking   13      1      ok       112ms
+                   2      ok       282ms
+Checking   14      1      ok       538ms
+                   2      ok       673ms
+Checking   15      1      ok       281ms
+                   2      ok       392ms
+Checking   16      1      ok       182ms
+                   2      ok       111ms
+Checking   17      1      ok        95ms
+                   2      ok       593ms
+Checking   18      1      ok       100ms
+                   2      ok       351ms
+Checking   19      1      ok       173ms
+                   2      ok       100ms
+Checking   20      1      ok       100ms
+                   2      ok       134ms
+Checking   21      1      ok       133ms
+                   2      ok      1446ms
+Checking   22      1      ok       121ms
+                   2      ok      1195ms
+Checking   23      1      ok       113ms
+                   2      ok        87ms
+Checking   24      1      ok      3132ms
+                   2      ok      3078ms
+Checking   25      1      ok       844ms
+                   2      ok        16ms
+```
+
+#### 2018
+```
+           Day   Part   Result   Duration
+Checking    1      1      ok        36ms
+                   2      ok       109ms
+Checking    2      1      ok        22ms
+                   2      ok        57ms
+Checking    3      1      ok       110ms
+                   2      ok       101ms
+Checking    4      1      ok       107ms
+                   2      ok       101ms
+Checking    5      1      ok       225ms
+                   2      ok      5241ms
+Checking    6      1      ok      6883ms
+                   2      ok       114ms
+Checking    7      1      ok        98ms
+                   2      ok       100ms
+Checking    8      1      ok        99ms
+                   2      ok        94ms
+Checking    9      1      ok      2245ms
+                   2      ok       646ms
+Checking   10      1      ok       275ms
+                   2      ok       215ms
+Checking   11      1      ok       234ms
+                   2      ok      9577ms
+Checking   12      1      ok       116ms
+                   2      ok       134ms
+Checking   13      1      ok       105ms
+                   2      ok       102ms
+Checking   14      1      ok       251ms
+                   2      ok      1260ms
+Checking   15      1      ok      1352ms
+                   2      ok      1212ms
+Checking   16      1      ok       104ms
+                   2      ok       112ms
+Checking   17      1      ok      5923ms
+                   2      ok      6043ms
+Checking   18      1      ok       109ms
+                   2      ok       491ms
+Checking   19      1      ok       204ms
+
+```
+
+
+#### 2019
+```
+           Day   Part   Result   Duration
+Checking    1      1      ok       107ms
+                   2      ok       126ms
+Checking    2      1      ok        95ms
+                   2      ok        93ms
+Checking    3      1      ok       160ms
+                   2      ok       135ms
+Checking    4      1      ok        94ms
+                   2      ok        92ms
+Checking    5      1      ok        85ms
+                   2      ok        84ms
+Checking    6      1      ok        97ms
+                   2      ok        90ms
+Checking    7      1      ok        98ms
+                   2      ok        94ms
+Checking    8      1      ok        80ms
+                   2      ok        80ms
+Checking    9      1      ok        82ms
+                   2      ok       141ms
+Checking   10      1      ok       101ms
+                   2      ok        91ms
+Checking   11      1      ok       108ms
+                   2      ok        96ms
+Checking   12      1      ok        81ms
+                   2      ok       233ms
+Checking   13      1      ok        88ms
+                   2      ok      4935ms
+Checking   14      1      ok       182ms
+                   2      ok        96ms
+Checking   15      1      ok       110ms
+                   2      ok       117ms
+Checking   16      1      ok       177ms
+                   2      ok       203ms
+Checking   17      1      ok        97ms
+                   2      ok       114ms
+Checking   18      1      ok       141ms
+                   2      ok      6255ms
+Checking   19      1      ok       296ms
+                   2      ok       441ms
+Checking   20      1      ok       129ms
+                   2      ok       292ms
+Checking   21      1      ok        88ms
+                   2      ok       171ms
+Checking   22      1      ok        85ms
+                   2      ok       109ms
+Checking   23      1      ok       133ms
+```
+
+#### 2020
+```
+           Day   Part   Result   Duration
+Checking    1      1      ok       112ms
+                   2      ok       101ms
+Checking    2      1      ok       101ms
+                   2      ok       103ms
+Checking    3      1      ok        94ms
+                   2      ok       100ms
+Checking    4      1      ok       132ms
+                   2      ok       128ms
+Checking    5      1      ok       102ms
+                   2      ok        96ms
+Checking    6      1      ok        92ms
+                   2      ok        93ms
+Checking    7      1      ok       110ms
+                   2      ok       104ms
+Checking    8      1      ok       102ms
+                   2      ok       104ms
+Checking    9      1      ok        93ms
+                   2      ok        96ms
+Checking   10      1      ok       115ms
+                   2      ok       114ms
+Checking   11      1      ok       591ms
+                   2      ok       584ms
+Checking   12      1      ok       127ms
                    2      ok       116ms
+Checking   13      1      ok       140ms
+                   2      ok        97ms
+Checking   14      1      ok       100ms
+                   2      ok       129ms
+Checking   15      1      ok       107ms
+                   2      ok      1769ms
+Checking   16      1      ok       106ms
+                   2      ok       103ms
+Checking   17      1      ok       109ms
+                   2      ok       387ms
+Checking   18      1      ok       294ms
+                   2      ok       114ms
+Checking   19      1      ok       110ms
+                   2      ok       114ms
+Checking   20      1      ok       156ms
+                   2      ok       123ms
+Checking   21      1      ok       111ms
+                   2      ok       120ms
+Checking   22      1      ok       117ms
+                   2      ok      1054ms
+Checking   23      1      ok       125ms
+                   2      ok      6897ms
+Checking   24      1      ok        95ms
+                   2      ok      1054ms
+Checking   25      1      ok       127ms
+                   2      ok         3ms
+```
+
+#### 2021
+```
+           Day   Part   Result   Duration
+Checking    1      1      ok       100ms
+                   2      ok        96ms
+Checking    2      1      ok        85ms
+                   2      ok        86ms
+Checking    3      1      ok        87ms
+                   2      ok        89ms
+Checking    4      1      ok       113ms
+                   2      ok       104ms
+Checking    5      1      ok       127ms
+                   2      ok       130ms
+Checking    6      1      ok        95ms
+                   2      ok        92ms
+Checking    7      1      ok        95ms
+                   2      ok       106ms
+Checking    8      1      ok        90ms
+                   2      ok        97ms
+Checking    9      1      ok        86ms
+                   2      ok       108ms
+Checking   10      1      ok        95ms
+                   2      ok       104ms
+Checking   11      1      ok        93ms
+                   2      ok        85ms
+Checking   12      1      ok        92ms
+                   2      ok       128ms
+Checking   13      1      ok        99ms
+                   2      ok       110ms
+Checking   14      1      ok       102ms
+                   2      ok        85ms
 ```
