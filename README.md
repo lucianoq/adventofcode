@@ -1,7 +1,6 @@
 ## Advent of Code
 
-![2015-2021 full stars](2015-21_stars.png)
-
+![350 stars](./350_stars.png)
 
 ### Benchmarks
 
