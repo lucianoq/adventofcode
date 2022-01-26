@@ -1,8 +1,9 @@
-### Advent of Code
+## Advent of Code
 
-Answers and Code.
+![2015-2021 full stars](2015-21_stars.png)
 
-Following values include the `go run` compilation time.
+
+### Benchmarks
 
 #### 2015
 ```
@@ -58,7 +59,6 @@ Checking   24      1      ok      7041ms
 Checking   25      1      ok       150ms
                    2      ok         3ms
 ```
-
 
 #### 2016
 ```
@@ -213,7 +213,6 @@ Checking   19      1      ok       204ms
 
 ```
 
-
 #### 2019
 ```
            Day   Part   Result   Duration
@@ -322,36 +321,54 @@ Checking   25      1      ok       127ms
 #### 2021
 ```
            Day   Part   Result   Duration
-Checking    1      1      ok       100ms
-                   2      ok        96ms
-Checking    2      1      ok        85ms
+Checking    1      1      ok        87ms
                    2      ok        86ms
-Checking    3      1      ok        87ms
-                   2      ok        89ms
-Checking    4      1      ok       113ms
-                   2      ok       104ms
-Checking    5      1      ok       127ms
-                   2      ok       130ms
-Checking    6      1      ok        95ms
-                   2      ok        92ms
-Checking    7      1      ok        95ms
-                   2      ok       106ms
-Checking    8      1      ok        90ms
+Checking    2      1      ok        85ms
+                   2      ok        94ms
+Checking    3      1      ok        85ms
+                   2      ok       100ms
+Checking    4      1      ok       118ms
+                   2      ok       102ms
+Checking    5      1      ok       117ms
+                   2      ok       113ms
+Checking    6      1      ok        88ms
+                   2      ok        91ms
+Checking    7      1      ok        97ms
+                   2      ok       100ms
+Checking    8      1      ok        91ms
                    2      ok        97ms
-Checking    9      1      ok        86ms
-                   2      ok       108ms
-Checking   10      1      ok        95ms
-                   2      ok       104ms
-Checking   11      1      ok        93ms
-                   2      ok        85ms
-Checking   12      1      ok        92ms
-                   2      ok       128ms
-Checking   13      1      ok        99ms
-                   2      ok       110ms
-Checking   14      1      ok       102ms
-                   2      ok        85ms
-Checking   15      1      ok        97ms
-                   2      ok       308ms
-Checking   16      1      ok        97ms
-                   2      ok        99ms
+Checking    9      1      ok        95ms
+                   2      ok       102ms
+Checking   10      1      ok       114ms
+                   2      ok       106ms
+Checking   11      1      ok       109ms
+                   2      ok        86ms
+Checking   12      1      ok        94ms
+                   2      ok       138ms
+Checking   13      1      ok       105ms
+                   2      ok       118ms
+Checking   14      1      ok       114ms
+                   2      ok        86ms
+Checking   15      1      ok       104ms
+                   2      ok       321ms
+Checking   16      1      ok        95ms
+                   2      ok        87ms
+Checking   17      1      ok        98ms
+                   2      ok       107ms
+Checking   18      1      ok        87ms
+                   2      ok       170ms
+Checking   19      1      ok      1881ms
+                   2      ok      2919ms
+Checking   20      1      ok        97ms
+                   2      ok       527ms
+Checking   21      1      ok        82ms
+                   2      ok      2099ms
+Checking   22      1      ok       824ms
+                   2      ok       290ms
+Checking   23      1      ok       342ms
+                   2      ok       389ms
+Checking   24      1      ok       183ms
+                   2      ok      1277ms
+Checking   25      1      ok      3615ms
+                   2      ok         7ms
 ```
