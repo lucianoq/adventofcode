@@ -5,12 +5,14 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/lucianoq/container/set"
 )
 
 type C struct{ x, y int }
 
 type Grid struct {
-	grid          map[C]struct{}
+	grid          set.Set[C]
 	width, height int
 }
 
@@ -22,7 +24,7 @@ type Fold struct {
 func parse() (*Grid, []Fold) {
 	folds := []Fold{}
 	grid := &Grid{
-		grid: map[C]struct{}{},
+		grid: set.New[C](),
 	}
 
 	scanner := bufio.NewScanner(os.Stdin)
@@ -47,7 +49,7 @@ func parse() (*Grid, []Fold) {
 		ff := strings.Split(line, ",")
 		x, _ := strconv.Atoi(ff[0])
 		y, _ := strconv.Atoi(ff[1])
-		grid.grid[C{x, y}] = struct{}{}
+		grid.grid.Add(C{x, y})
 		if x >= grid.width {
 			grid.width = x + 1
 		}
@@ -78,9 +80,9 @@ func fold(grid *Grid, fold Fold) {
 				newY = fold.line*2 - y
 			}
 
-			if _, ok := grid.grid[C{newX, newY}]; ok {
-				grid.grid[C{x, y}] = struct{}{}
-				delete(grid.grid, C{newX, newY})
+			if grid.grid.Contains(C{newX, newY}) {
+				grid.grid.Add(C{x, y})
+				grid.grid.Remove(C{newX, newY})
 			}
 		}
 	}
