@@ -2,18 +2,8 @@ package main
 
 import (
 	"math"
-	"reflect"
-	"runtime"
-	"strings"
 	"testing"
 )
-
-func getFunctionName(i interface{}) string {
-	s := runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name()
-	tok := strings.Split(s, ".")
-	s = tok[len(tok)-1]
-	return s
-}
 
 func TestGenerator(t *testing.T) {
 	t.Parallel()
@@ -71,10 +61,10 @@ func TestGenerator(t *testing.T) {
 
 			count := 0
 			for range ch {
-				//for _, x := range list {
+				// for _, x := range list {
 				//	fmt.Print(getFunctionName(x.Spell) + " ")
-				//}
-				//fmt.Println()
+				// }
+				// fmt.Println()
 				count++
 			}
 
