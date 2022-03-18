@@ -1,16 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/lucianoq/container/set"
+)
 
 func main() {
 	aligned := alignAll(parse())
 
-	set := map[Point]struct{}{}
+	set := set.New[Point]()
 	for _, s := range aligned {
-		for _, b := range s.beacons {
-			set[b] = struct{}{}
-		}
+		set.Add(s.beacons...)
 	}
 
-	fmt.Println(len(set))
+	fmt.Println(set.Len())
 }
