@@ -1,15 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/lucianoq/container/set"
+)
 
 func main() {
 	draws, boards := parse()
 
-	drawn := map[int]struct{}{}
+	drawn := set.New[int]()
 
 	for _, d := range draws {
 
-		drawn[d] = struct{}{}
+		drawn.Add(d)
 
 		if len(boards) == 1 && boards[0].Wins(drawn) {
 			fmt.Println(d * boards[0].SumUnmarked(drawn))

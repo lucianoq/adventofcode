@@ -1,15 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/lucianoq/container/set"
+)
 
 func main() {
 	draws, boards := parse()
 
-	drawn := map[int]struct{}{}
+	drawn := set.New[int]()
 
 	for _, d := range draws {
 
-		drawn[d] = struct{}{}
+		drawn.Add(d)
 
 		for _, b := range boards {
 			if b.Wins(drawn) {

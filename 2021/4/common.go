@@ -5,16 +5,17 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/lucianoq/container/set"
 )
 
 type Board [5][5]int
 
-func (b *Board) Wins(drawn map[int]struct{}) bool {
+func (b *Board) Wins(drawn set.Set[int]) bool {
 Row:
 	for i := 0; i < 5; i++ {
 		for j := 0; j < 5; j++ {
-			_, marked := drawn[b[i][j]]
-			if !marked {
+			if !drawn.Contains(b[i][j]) {
 				continue Row
 			}
 		}
@@ -24,8 +25,7 @@ Row:
 Column:
 	for j := 0; j < 5; j++ {
 		for i := 0; i < 5; i++ {
-			_, marked := drawn[b[i][j]]
-			if !marked {
+			if !drawn.Contains(b[i][j]) {
 				continue Column
 			}
 		}
@@ -35,12 +35,11 @@ Column:
 	return false
 }
 
-func (b *Board) SumUnmarked(drawn map[int]struct{}) int {
+func (b *Board) SumUnmarked(drawn set.Set[int]) int {
 	sumUnmarked := 0
 	for i := 0; i < 5; i++ {
 		for j := 0; j < 5; j++ {
-			_, marked := drawn[b[i][j]]
-			if !marked {
+			if !drawn.Contains(b[i][j]) {
 				sumUnmarked += b[i][j]
 			}
 		}
