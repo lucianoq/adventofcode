@@ -9,7 +9,7 @@ func recursive(model []int, z int) int {
 		digitIdx := len(model) - 1
 		z := alu(z, digit, digitIdx)
 
-		if _, ok := uselessBranches[Status{digitIdx, z}]; ok {
+		if uselessBranches.Contains(Status{digitIdx, z}) {
 			// if we already unsuccessfully visited a situation
 			// with this z at this level, and we didn't find a valid
 			// sequel, there is no point on traversing it again
@@ -33,6 +33,6 @@ func recursive(model []int, z int) int {
 
 	// no valid digit was found for this model
 	// set it as useless
-	uselessBranches[Status{len(model) - 1, z}] = struct{}{}
+	uselessBranches.Add(Status{len(model) - 1, z})
 	return 0
 }

@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/lucianoq/container/set"
 )
 
 type Status struct{ DigitIdx, Z int }
 
-var uselessBranches = map[Status]struct{}{}
+var uselessBranches = set.New[Status]()
 
 func main() {
 	model := recursive([]int{}, 0)
