@@ -1,12 +1,14 @@
 package main
 
-func toString(grid map[C]struct{}, width, height, letterWidth, spaces int) string {
+import "github.com/lucianoq/container/set"
+
+func toString(grid set.Set[C], width, height, letterWidth, spaces int) string {
 	str := ""
 	for offset := 0; offset < width; offset += letterWidth + spaces {
 		var sum uint32
 		for i := 0; i < height; i++ {
 			for j := 0; j < letterWidth; j++ {
-				if _, ok := grid[C{j + offset, i}]; ok {
+				if grid.Contains(C{j + offset, i}) {
 					sum |= 1 << (letterWidth*i + j)
 				}
 			}
