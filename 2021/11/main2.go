@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/lucianoq/container/set"
+)
 
 func main() {
 	grid := parse()
@@ -16,7 +20,7 @@ func main() {
 
 		// Then, any octopus with an energy level greater than 9 flashes.
 
-		flashed := map[pair]struct{}{}
+		flashed := set.New[pair]()
 
 		for {
 			changed := false
@@ -24,8 +28,8 @@ func main() {
 				for j := 0; j < Size; j++ {
 					if grid[i][j] > 9 {
 
-						if _, ok := flashed[pair{i, j}]; !ok {
-							flashed[pair{i, j}] = struct{}{}
+						if !flashed.Contains(pair{i, j}) {
+							flashed.Add(pair{i, j})
 							changed = true
 
 							// This increases the energy level of all adjacent octopuses by 1,
@@ -50,14 +54,14 @@ func main() {
 			}
 		}
 
-		if len(flashed) == Size*Size {
+		if flashed.Len() == Size*Size {
 			fmt.Println(step)
 			return
 		}
 
 		// Finally, any octopus that flashed during this step has its energy
 		// level set to 0, as it used all of its energy to flash.
-		for f, _ := range flashed {
+		for f := range flashed {
 			grid[f.i][f.j] = 0
 		}
 	}
