@@ -10,16 +10,17 @@ cd "$YEAR/$DAY" || exit
 touch output1 output2
 
 GO_TEMPLATE="package main\n\nfunc main() {\n    \n}\n"
-echo -en "$GO_TEMPLATE" | tee main1.go main2.go >/dev/null
+if [ ! -f main1.go ]; then echo -en "$GO_TEMPLATE" > main1.go; fi
+if [ ! -f main2.go ]; then echo -en "$GO_TEMPLATE" > main2.go; fi
 
-
-cat >Makefile <<EOF
+if [ ! -f Makefile ]; then cat >Makefile <<EOF
 1:
 	go run main1.go <input
 
 2:
 	go run main2.go <input
 EOF
+fi
 
 # download input files
 http "https://adventofcode.com/$YEAR/day/$DAY/input" "Cookie:session=$AOC_SESSION;" >input
