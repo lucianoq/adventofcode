@@ -17,9 +17,9 @@ func main() {
 		case "X":
 			score += (opponent+2)%3 + 1
 		case "Y":
-			score += opponent + 1 + DrawingPoints
+			score += opponent + 1 + 3
 		case "Z":
-			score += (opponent+1)%3 + 1 + WinningPoints
+			score += (opponent+1)%3 + 1 + 6
 		}
 	}
 	fmt.Println(score)

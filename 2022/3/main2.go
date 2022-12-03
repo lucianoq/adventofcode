@@ -39,3 +39,10 @@ func main() {
 	}
 	fmt.Println(sum)
 }
+
+func priority(r rune) int {
+	if r <= 'Z' {
+		return int(r) - 'A' + 26 + 1
+	}
+	return int(r) - 'a' + 1
+}

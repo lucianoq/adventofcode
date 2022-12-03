@@ -13,29 +13,25 @@ func main() {
 	for scanner.Scan() {
 		line := scanner.Text()
 
-		set := map[rune]struct{}{}
-		dups := map[rune]struct{}{}
+		set := map[byte]struct{}{}
 
-		for i, c := range line {
-			if i < len(line)/2 {
-				set[c] = struct{}{}
-			} else {
-				if _, ok := set[c]; ok {
-					dups[c] = struct{}{}
-				}
-			}
+		for i := 0; i < len(line)/2; i++ {
+			set[line[i]] = struct{}{}
 		}
 
-		for c := range dups {
-			sum += priority(c)
+		for i := len(line) / 2; i < len(line); i++ {
+			if _, ok := set[line[i]]; ok {
+				sum += priority(line[i])
+				break
+			}
 		}
 	}
 	fmt.Println(sum)
 }
 
-func priority(r rune) int {
-	if r <= 'Z' {
-		return int(r) - 'A' + 26 + 1
+func priority(c byte) int {
+	if c <= 'Z' {
+		return int(c) - 'A' + 26 + 1
 	}
-	return int(r) - 'a' + 1
+	return int(c) - 'a' + 1
 }
