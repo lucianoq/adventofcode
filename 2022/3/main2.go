@@ -7,35 +7,31 @@ import (
 )
 
 func main() {
-	dups := map[rune]int{}
-	badges := []rune{}
+	sum := 0
+	common := map[rune]int{}
 
 	scanner := bufio.NewScanner(os.Stdin)
 	for i := 0; scanner.Scan(); i++ {
 		line := scanner.Text()
 
 		set := map[rune]struct{}{}
-		for _, c := range line {
-			set[c] = struct{}{}
+		for _, ch := range line {
+			set[ch] = struct{}{}
 		}
 
-		for c := range set {
-			dups[c]++
+		for ch := range set {
+			common[ch]++
 		}
 
 		if i%3 == 2 {
-			for c, freq := range dups {
+			for ch, freq := range common {
 				if freq == 3 {
-					badges = append(badges, c)
+					sum += priority(ch)
+					common = map[rune]int{}
+					break
 				}
 			}
-			dups = map[rune]int{}
 		}
-	}
-
-	sum := 0
-	for _, b := range badges {
-		sum += priority(b)
 	}
 	fmt.Println(sum)
 }
