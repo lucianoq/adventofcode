@@ -1,0 +1,62 @@
+name: Update AoC Badges
+on:
+  schedule:
+    - cron: '6 5 1-25 12 *'
+
+  workflow_dispatch:
+
+  push:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 373470
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2015
+          starsRegex: '(?<=\[2015\]\(https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 373470
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2016
+          starsRegex: '(?<=\[2016\]\(https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 373470
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2017
+          starsRegex: '(?<=\[2017\]\(https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 373470
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2018
+          starsRegex: '(?<=\[2018\]\(https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 373470
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2019
+          starsRegex: '(?<=\[2019\]\(https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 373470
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2020
+          starsRegex: '(?<=\[2020\]\(https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 373470
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2021
+          starsRegex: '(?<=\[2021\]\(https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update badges
+          file_pattern: README.md
