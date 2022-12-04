@@ -55,6 +55,12 @@ jobs:
           session: ${{ secrets.AOC_SESSION }}
           year: 2021
           starsRegex: '(?<=\[2021\]\(https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 373470
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2022
+          starsRegex: '(?<=\[2022\]\(https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
