@@ -9,9 +9,8 @@ cd "$YEAR/$DAY" || exit
 
 touch output1 output2
 
-GO_TEMPLATE="package main\n\nfunc main() {\n    \n}\n"
-if [ ! -f main1.go ]; then echo -en "$GO_TEMPLATE" > main1.go; fi
-if [ ! -f main2.go ]; then echo -en "$GO_TEMPLATE" > main2.go; fi
+if [ ! -f main1.go ]; then cp ../../go.template main1.go; fi
+if [ ! -f main2.go ]; then cp ../../go.template main2.go; fi
 
 if [ ! -f Makefile ]; then cat >Makefile <<EOF
 1:
