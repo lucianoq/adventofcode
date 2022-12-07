@@ -1,16 +1,30 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+)
 
 func main() {
-	elves := parse()
+	scanner := bufio.NewScanner(os.Stdin)
 
-	max := 0
-	for _, cal := range elves {
-		if cal > max {
-			max = cal
+	maxCal := 0
+	sum := 0
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		if line == "" {
+			if sum > maxCal {
+				maxCal = sum
+			}
+			sum = 0
+			continue
 		}
+		cal, _ := strconv.Atoi(line)
+		sum += cal
 	}
 
-	fmt.Println(max)
+	fmt.Println(maxCal)
 }
