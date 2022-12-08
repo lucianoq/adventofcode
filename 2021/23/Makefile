@@ -1,5 +1,16 @@
-1:
-	go run main1.go common.go heap.go grid.go cell.go
+main1:
+	go build -o main1 main1.go common.go heap.go grid.go cell.go
 
-2:
-	go run main2.go common.go heap.go grid.go cell.go
+main2:
+	go build -o main2 main2.go common.go heap.go grid.go cell.go
+
+.PHONY: run1 run2 clean
+
+run1: main1
+	./main1 <input
+
+run2: main2
+	./main2 <input
+
+clean:
+	rm -f main1 main2

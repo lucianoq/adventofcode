@@ -13,11 +13,23 @@ if [ ! -f main1.go ]; then cp ../../go.template main1.go; fi
 if [ ! -f main2.go ]; then cp ../../go.template main2.go; fi
 
 if [ ! -f Makefile ]; then cat >Makefile <<EOF
-1:
-	go run main1.go <input
+main1:
+	go build -o main1 main1.go common.go
 
-2:
-	go run main2.go <input
+main2:
+	go build -o main2 main2.go common.go
+
+.PHONY: run1 run2 clean
+
+run1: main1
+	./main1 <input
+
+run2: main2
+	./main2 <input
+
+clean:
+	rm -f main1 main2
+
 EOF
 fi
 
