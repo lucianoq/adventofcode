@@ -12,7 +12,7 @@ var Dirs = [4]P{
 	{0, -1}, // Left
 }
 
-func bfs(start P) int {
+func bfs(start P, goal func(p P) bool, forbidden func(from, to P) bool) int {
 	todo := []Status{{start, 0}}
 	visited := map[P]struct{}{start: {}}
 
@@ -21,7 +21,7 @@ func bfs(start P) int {
 	for len(todo) > 0 {
 		curr, todo = todo[0], todo[1:]
 
-		if curr.Point == End {
+		if goal(curr.Point) {
 			return curr.Steps
 		}
 
@@ -33,8 +33,7 @@ func bfs(start P) int {
 				continue
 			}
 
-			// too high to climb
-			if Map[neighbour]-Map[curr.Point] >= 2 {
+			if forbidden(curr.Point, neighbour) {
 				continue
 			}
 

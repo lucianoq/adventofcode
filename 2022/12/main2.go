@@ -3,17 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	min := 1<<63 - 1
-	for x := 0; x < Height; x++ {
-		for y := 0; y < Width; y++ {
-			p := P{x, y}
-			if Map[p] == 'a' {
-				steps := bfs(p)
-				if steps < min {
-					min = steps
-				}
-			}
-		}
+	// Stop when we find an 'a'
+	goal := func(p P) bool {
+		return Map[p] == 'a'
 	}
-	fmt.Println(min)
+
+	// avoid going downhill by 2 or more
+	forbidden := func(from, to P) bool {
+		return Map[from]-Map[to] >= 2
+	}
+
+	// Find the first 'a', starting from End
+	fmt.Println(bfs(End, goal, forbidden))
 }
