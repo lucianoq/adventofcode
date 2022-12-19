@@ -27,7 +27,7 @@ for i in $(seq 1 25); do
     fi
 
     ELAPSED=$(echo "$END - $START" | bc)
-    printf '%8.4sms\n' "${ELAPSED}"
+    printf '%8.6sms\n' "${ELAPSED}"
 
   done
 
