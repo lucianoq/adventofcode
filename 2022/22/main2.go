@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func (h *Human) Walk() bool {
 	dirDelta := Dirs[h.Facing]
 	next := P{h.Curr.X + dirDelta.X, h.Curr.Y + dirDelta.Y}
@@ -13,11 +11,7 @@ func (h *Human) Walk() bool {
 		return true
 	}
 
-	fmt.Println("I'm at the border!")
-	fmt.Printf("I'm currently at (%d, %d)\n", h.Curr.X, h.Curr.Y)
-	fmt.Printf("I tried to go to (%d, %d)\n", next.X, next.Y)
 	next, nextFacing := crossBorder(next, h.Facing)
-	fmt.Printf("I landed at (%d, %d)\n", next.X, next.Y)
 
 	if Map[next] {
 		return false
