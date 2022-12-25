@@ -1,8 +1,19 @@
-1:
-	go run main1.go vm.go
+main1:
+	go build -o main1 main1.go vm.go
 
-2:
-	go run main2.go vm.go
+main2:
+	go build -o main2 main2.go vm.go
+
+.PHONY: run1 run2 clean draw
+
+run1: main1
+	./main1 <input
+
+run2: main2
+	./main2 <input
+
+clean:
+	rm -f main1 main2
 
 draw:
 	go run main1_draw.go vm.go

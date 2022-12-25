@@ -1,8 +1,19 @@
-1:
-	go run main1.go common.go <input
+main1:
+	go build -o main1 main1.go common.go
 
-2:
-	go run main2.go common.go <input
+main2:
+	go build -o main2 main2.go common.go
+
+.PHONY: run1 run2 clean draw
+
+run1: main1
+	./main1 <input
+
+run2: main2
+	./main2 <input
+
+clean:
+	rm -f main1 main2
 
 draw:
 	go run main2_draw.go common.go <input

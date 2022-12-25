@@ -1,17 +1,17 @@
-1:
-	go run main1.go common.go <input
+main1:
+	go build -o main1 main1.go common.go
 
-1rb:
-	ruby main1.rb <input
+main2:
+	go build -o main2 main2.go common.go
 
-1py:
-	python3 main1.py <input
+.PHONY: run1 run2 clean
 
-2:
-	go run main2.go common.go <input
+run1: main1
+	./main1 <input
 
-2rb:
-	ruby main2.rb <input
+run2: main2
+	./main2 <input
 
-2py:
-	python3 main2.py <input
+clean:
+	rm -f main1 main2
+
