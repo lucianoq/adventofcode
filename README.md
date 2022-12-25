@@ -1,6 +1,6 @@
 ## Advent of Code
 
-![350 stars](./350_stars.png)
+![350 stars](./stars.png)
 
 ## Progress
 
