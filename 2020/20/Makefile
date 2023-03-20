@@ -4,7 +4,7 @@ main1:
 main2:
 	go build -o main2 main2.go common.go
 
-.PHONY: run1 run2 clean
+.PHONY: run1 run2 clean graph
 
 run1: main1
 	./main1 <input
