@@ -21,7 +21,7 @@ func main() {
 
 func (m Map) Convert(from int) int {
 	for _, t := range m {
-		if from >= t.Source && from <= t.Source+t.Length {
+		if from >= t.Source && from < t.Source+t.Length {
 			return t.Destination + (from - t.Source)
 		}
 	}

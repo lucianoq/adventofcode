@@ -22,7 +22,7 @@ func main() {
 
 func (m Map) InverseConvert(to int) int {
 	for _, t := range m {
-		if to >= t.Destination && to <= t.Destination+t.Length {
+		if to >= t.Destination && to < t.Destination+t.Length {
 			return t.Source + (to - t.Destination)
 		}
 	}
