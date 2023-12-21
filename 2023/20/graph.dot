@@ -1,0 +1,62 @@
+digraph {
+  broadcaster [color=blue]
+  rx [color=red]
+dx -> {fb jm}
+ss -> {lp}
+broadcaster -> {km xt pk vk}
+pk -> {gp cb}
+bk -> {dg jn}
+pd -> {cf fb}
+gp -> {vm cb bd qm xf pk}
+kg -> {fb}
+vm -> {bf}
+vk -> {cg fb}
+dt -> {xv gp}
+lm -> {bh}
+cb -> {bd}
+mp -> {xn}
+jn -> {hs lp hm hn ql xt ss}
+bf -> {fx gp}
+rn -> {bk jn}
+hn -> {xn}
+fb -> {hb vk fz kl cg}
+js -> {zb jl}
+ql -> {hs}
+rs -> {fb rt}
+jf -> {jn kz}
+jm -> {hv fb}
+ms -> {bg}
+hv -> {kg fb}
+lp -> {hm}
+kl -> {rs}
+kz -> {ss jn}
+jv -> {rn jn}
+rt -> {fb hb}
+fz -> {xn}
+bd -> {dt}
+bh -> {jl ms}
+jl -> {km lm ms mp lr zb bg}
+dg -> {jn}
+rr -> {vm gp}
+xv -> {mv gp}
+jt -> {hx jl}
+pt -> {jt jl}
+qd -> {jl}
+km -> {jl lm}
+mv -> {gp qm}
+lr -> {pt}
+hb -> {pd}
+cf -> {dx fb}
+xt -> {jn jf}
+hs -> {jv}
+zb -> {lr}
+dp -> {gp}
+cg -> {kl}
+hx -> {qd jl}
+qm -> {rr}
+fx -> {gp dp}
+hm -> {ql}
+xn -> {rx}
+bg -> {js}
+xf -> {xn}
+}
