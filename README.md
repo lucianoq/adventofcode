@@ -14,4 +14,4 @@
 | 2020 | [![2020](https://img.shields.io/badge/stars%20⭐-50-yellow)](https://adventofcode.com/2020/stats) |
 | 2021 | [![2021](https://img.shields.io/badge/stars%20⭐-50-yellow)](https://adventofcode.com/2021/stats) |
 | 2022 | [![2022](https://img.shields.io/badge/stars%20⭐-50-yellow)](https://adventofcode.com/2022/stats) |
-| 2023 | [![2023](https://img.shields.io/badge/stars%20⭐-38-yellow)](https://adventofcode.com/2023/stats) |
+| 2023 | [![2023](https://img.shields.io/badge/stars%20⭐-39-yellow)](https://adventofcode.com/2023/stats) |
