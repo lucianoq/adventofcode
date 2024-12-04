@@ -7,17 +7,18 @@ DAY="$2"
 mkdir -p "$YEAR/$DAY"
 cd "$YEAR/$DAY" || exit
 
-touch output1 output2
-
 if [ ! -f main1.go ]; then cp ../../go.template main1.go; fi
 if [ ! -f main2.go ]; then cp ../../go.template main2.go; fi
 
 if [ ! -f Makefile ]; then cat >Makefile <<EOF
+download:
+  http "https://adventofcode.com/$YEAR/day/$DAY/input" "Cookie:session=$AOC_SESSION;" >input
+
 main1:
-	go build -o main1 main1.go common.go
+	go build -o main1 main1.go
 
 main2:
-	go build -o main2 main2.go common.go
+	go build -o main2 main2.go
 
 .PHONY: run1 run2 clean
 
@@ -28,15 +29,10 @@ run2: main2
 	./main2 <input
 
 clean:
-	rm -f main1 main2
+	rm -f main1 main2 input
 
 EOF
 fi
 
 # download input files
 http "https://adventofcode.com/$YEAR/day/$DAY/input" "Cookie:session=$AOC_SESSION;" >input
-
-# download assignment
-http "https://adventofcode.com/$YEAR/day/$DAY" "Cookie:session=$AOC_SESSION;" | pup 'article.day-desc' >tmp.html
-lynx -dump tmp.html -width 80 >assignment
-rm -f tmp.html
