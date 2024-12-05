@@ -11,8 +11,8 @@ if [ ! -f main1.go ]; then cp ../../go.template main1.go; fi
 if [ ! -f main2.go ]; then cp ../../go.template main2.go; fi
 
 if [ ! -f Makefile ]; then cat >Makefile <<EOF
-download:
-  http "https://adventofcode.com/$YEAR/day/$DAY/input" "Cookie:session=$AOC_SESSION;" >input
+input:
+	http "https://adventofcode.com/$YEAR/day/$DAY/input" "Cookie:session=\${AOC_SESSION};" >input
 
 main1:
 	go build -o main1 main1.go
@@ -22,10 +22,10 @@ main2:
 
 .PHONY: run1 run2 clean
 
-run1: main1
+run1: main1 input
 	./main1 <input
 
-run2: main2
+run2: main2 input
 	./main2 <input
 
 clean:
