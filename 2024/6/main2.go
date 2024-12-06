@@ -1,32 +1,27 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/lucianoq/container/set"
-)
+import "fmt"
 
 func main() {
-	m, p, dir := parseMap()
+	m, pos, dir := parseMap()
+
+	visited := run(m, pos, dir)
 
 	var count int
-	for i := 0; i < Size; i++ {
-		for j := 0; j < Size; j++ {
-			if testObstacle(m, P{i, j}, p, dir) {
-				count++
-			}
+	for obstacle := range visited {
+		if testObstacle(m, obstacle, pos, dir) {
+			count++
 		}
 	}
-
 	fmt.Println(count)
 }
 
-type State struct {
+type status struct {
 	Pos P
-	Dir uint8
+	Dir Direction
 }
 
-func testObstacle(m map[P]struct{}, obstacle, pos P, dir uint8) bool {
+func testObstacle(m map[P]struct{}, obstacle P, pos P, dir Direction) bool {
 
 	// impossible if the guard is there
 	if obstacle == pos {
@@ -43,22 +38,12 @@ func testObstacle(m map[P]struct{}, obstacle, pos P, dir uint8) bool {
 		delete(m, obstacle)
 	}()
 
-	visited := set.Set[State]{}
-	visited.Add(State{pos, dir})
+	visited := map[status]struct{}{
+		status{pos, dir}: {},
+	}
 
 	for {
-		var next P
-
-		switch dir {
-		case N:
-			next = P{pos.x - 1, pos.y}
-		case E:
-			next = P{pos.x, pos.y + 1}
-		case S:
-			next = P{pos.x + 1, pos.y}
-		case W:
-			next = P{pos.x, pos.y - 1}
-		}
+		next := pos.Next(dir)
 
 		if next.x < 0 || next.x >= Size || next.y < 0 || next.y >= Size {
 			return false
@@ -70,10 +55,10 @@ func testObstacle(m map[P]struct{}, obstacle, pos P, dir uint8) bool {
 			pos = next
 		}
 
-		newState := State{pos, dir}
-		if visited.Contains(newState) {
+		st := status{pos, dir}
+		if _, ok := visited[st]; ok {
 			return true
 		}
-		visited.Add(newState)
+		visited[st] = struct{}{}
 	}
 }
