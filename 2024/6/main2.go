@@ -26,7 +26,7 @@ type State struct {
 	Dir uint8
 }
 
-func testObstacle(m map[P]any, obstacle, pos P, dir uint8) bool {
+func testObstacle(m map[P]struct{}, obstacle, pos P, dir uint8) bool {
 
 	// impossible if the guard is there
 	if obstacle == pos {

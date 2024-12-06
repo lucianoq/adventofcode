@@ -16,10 +16,10 @@ const (
 
 type P struct{ x, y int }
 
-func parseMap() (map[P]any, P, uint8) {
+func parseMap() (map[P]struct{}, P, uint8) {
 	var pos P
 	scanner := bufio.NewScanner(os.Stdin)
-	m := map[P]any{}
+	m := map[P]struct{}{}
 	for i := 0; scanner.Scan(); i++ {
 		line := scanner.Text()
 		for j, c := range line {
