@@ -6,7 +6,7 @@ func main() {
 	m, moves, robot := parseInput()
 	m, robot = grow(m, robot)
 	for _, move := range moves {
-		robot = apply(m, move, robot)
+		robot = apply2(m, move, robot)
 	}
 	fmt.Println(gps(m, '['))
 }
@@ -36,7 +36,7 @@ func grow(m map[P]byte, robot P) (map[P]byte, P) {
 	return newM, P{robot.x, 2 * robot.y}
 }
 
-func apply(m map[P]byte, move byte, robot P) P {
+func apply2(m map[P]byte, move byte, robot P) P {
 	delta := getDelta(move)
 
 	nextEmpty, err := findNextEmpty(m, robot, delta)

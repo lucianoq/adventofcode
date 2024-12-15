@@ -5,12 +5,12 @@ import "fmt"
 func main() {
 	m, moves, robot := parseInput()
 	for _, move := range moves {
-		robot = apply(m, move, robot)
+		robot = apply1(m, move, robot)
 	}
 	fmt.Println(gps(m, 'O'))
 }
 
-func apply(m map[P]byte, move byte, robot P) P {
+func apply1(m map[P]byte, move byte, robot P) P {
 	delta := getDelta(move)
 
 	nextEmpty, err := findNextEmpty(m, robot, delta)
