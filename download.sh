@@ -9,16 +9,17 @@ cd "$YEAR/$DAY" || exit
 
 if [ ! -f main1.go ]; then cp ../../go.template main1.go; fi
 if [ ! -f main2.go ]; then cp ../../go.template main2.go; fi
+if [ ! -f common.go ]; then echo "package main" > common.go; fi
 
 if [ ! -f Makefile ]; then cat >Makefile <<EOF
 input:
 	http "https://adventofcode.com/$YEAR/day/$DAY/input" "Cookie:session=\${AOC_SESSION};" >input
 
 main1:
-	go build -o main1 main1.go
+	go build -o main1 main1.go common.go
 
 main2:
-	go build -o main2 main2.go
+	go build -o main2 main2.go common.go
 
 .PHONY: run1 run2 clean
 
