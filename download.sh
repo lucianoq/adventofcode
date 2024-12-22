@@ -8,7 +8,7 @@ mkdir -p "$YEAR/$DAY"
 cd "$YEAR/$DAY" || exit
 
 if [ ! -f main1.go ]; then cp ../../go.template main1.go; fi
-if [ ! -f main2.go ]; then cp ../../go.template main2.go; fi
+if [ ! -f main2.go ]; then echo "package main" > main2.go; fi
 if [ ! -f common.go ]; then echo "package main" > common.go; fi
 
 if [ ! -f Makefile ]; then cat >Makefile <<EOF
