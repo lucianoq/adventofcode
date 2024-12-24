@@ -11,12 +11,12 @@ import (
 func main() {
 	facts, rules := parseInput()
 
-	// GenerateDot(rules)
-	// return
+	//GenerateDot(rules)
+	//return
 
 	// After generating the dot file, I could generate an image with
 	//
-	//   dot -Tpng -O graph.dot
+	//   dot -Tsvg -O graph.dot
 	//
 	// and thanks to the colors of the arrows, it was easy to spot inconsistencies.
 	// E.g.
@@ -50,10 +50,14 @@ func main() {
 	// - z19 <> cph  (they are both in the z19 area)
 	// - z33 <> hgj  (they are both in the z33 area)
 
-	swap("z13", "npf", rules)
-	swap("z33", "hgj", rules)
-	swap("gws", "nnt", rules)
-	swap("z19", "cph", rules)
+	swap := func(r1, r2 string) {
+		rules[r1], rules[r2] = rules[r2], rules[r1]
+	}
+	swap("z13", "npf")
+	swap("z33", "hgj")
+	swap("gws", "nnt")
+	swap("z19", "cph")
+
 	x := GetNumber("x", facts, rules)
 	y := GetNumber("y", facts, rules)
 	z := GetNumber("z", facts, rules)
@@ -67,10 +71,6 @@ func main() {
 	// Sum is working = true
 }
 
-func swap(r1, r2 string, rules map[string]Rule) {
-	rules[r1], rules[r2] = rules[r2], rules[r1]
-}
-
 func GenerateDot(rules map[string]Rule) {
 	f, err := os.Create("graph.dot")
 	if err != nil {
@@ -78,31 +78,25 @@ func GenerateDot(rules map[string]Rule) {
 	}
 	defer f.Close()
 
-	const Size = 45
+	color := map[string]string{
+		"XOR": "red",
+		"AND": "blue",
+		"OR":  "green",
+	}
+
 	fmt.Fprint(f, "digraph {\n")
 	for rName, r := range rules {
-		var color string
-		switch r.Op {
-		case "XOR":
-			color = "red"
-		case "AND":
-			color = "blue"
-		case "OR":
-			color = "green"
-		}
-
-		fmt.Fprintf(f, "%s -> %s [color=\"%s\"];\n", r.Left, rName, color)
-		fmt.Fprintf(f, "%s -> %s [color=\"%s\"];\n", r.Right, rName, color)
+		fmt.Fprintf(f, "%s -> %s [color=\"%s\"];\n", r.Left, rName, color[r.Op])
+		fmt.Fprintf(f, "%s -> %s [color=\"%s\"];\n", r.Right, rName, color[r.Op])
 	}
 
-	var xs, ys, zs []string
-	for i := 0; i < Size; i++ {
-		xs = append(xs, fmt.Sprintf("x%02d", i))
-		ys = append(ys, fmt.Sprintf("y%02d", i))
+	var xys, zs []string
+	for i := 0; i <= 45; i++ {
+		xys = append(xys, fmt.Sprintf("x%02d", i))
+		xys = append(xys, fmt.Sprintf("y%02d", i))
 		zs = append(zs, fmt.Sprintf("z%02d", i))
 	}
-	fmt.Fprintf(f, "{rank = min;\n %s ; \n};\n", strings.Join(xs, " -> "))
-	fmt.Fprintf(f, "{rank = min;\n %s ; \n};\n", strings.Join(ys, " -> "))
+	fmt.Fprintf(f, "{rank = min;\n %s ; \n};\n", strings.Join(xys, " -> "))
 	fmt.Fprintf(f, "{rank = max;\n %s ; \n};\n", strings.Join(zs, " -> "))
 	fmt.Fprint(f, "}\n")
 }

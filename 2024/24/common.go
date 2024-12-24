@@ -34,7 +34,7 @@ func parseInput() (map[string]bool, map[string]Rule) {
 
 func GetNumber(letter string, facts map[string]bool, rules map[string]Rule) int {
 	var z int
-	for i := 63; i >= 0; i-- {
+	for i := 0; i < 64; i++ {
 		if solve(fmt.Sprintf("%s%02d", letter, i), facts, rules) {
 			z |= 1 << i
 		}
